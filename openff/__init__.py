@@ -4,7 +4,7 @@ OpenFF parent metapackage
 """
 
 # Add imports here
-from .openff import *
+#from .openff import *
 
 # Handle versioneer
 from ._version import get_versions

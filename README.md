@@ -1,9 +1,12 @@
-openff
-==============================
+OpenFF Metapackage
+==================
 [//]: # (Badges)
-[![Travis Build Status](https://travis-ci.com/REPLACE_WITH_OWNER_ACCOUNT/openff.svg?branch=master)](https://travis-ci.com/REPLACE_WITH_OWNER_ACCOUNT/openff)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/openff/branch/master)
-[![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/openff/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/openff/branch/master)
+
+[![Test Status](https://github.com/openforcefield/openff/workflows/tests/badge.svg?branch=master)](https://github.com/openforcefield/openff/actions)
+[![Documentation Status](https://readthedocs.org/projects/openff/badge/?version=latest)](https://openff.readthedocs.io/en/latest/?badge=latest)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/openforcefield/openff.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/openforcefield/openff/context:python)
+[![codecov](https://codecov.io/gh/openforcefield/openff/branch/master/graph/badge.svg)](https://codecov.io/gh/openforcefield/openff/branch/master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 OpenFF parent metapackage
 

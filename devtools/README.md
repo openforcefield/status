@@ -15,6 +15,17 @@ Windows testing if you only plan to deploy on specific platforms. These are just
   * `before_install.sh`: Pip/Miniconda pre-package installation script for Travis 
 * `appveyor`: Windows based testing through [AppVeyor](https://www.appveyor.com/) (there are no files directly related to this)
 
+### Conda Recipe:
+
+This directory contains the files to build and deploy on [Conda](https://conda.io/). Although the Cookiecutter 
+does not do anything with this directory at the moment, we leave this here to show an example of how 
+your conda-recipe folder should look, when you decide to start deployment.
+
+* `conda-recipe`: directory containing all the build objects required for Conda. All files in this folder must have their given names
+  * `meta.yaml`: The yaml file needed by Conda to construct the build
+  * `build.sh`: Unix-based instructions for how to install the software interpreted by Conda
+  * `bld.bat`: Windows-based instructions for how to install the software interpreted by Conda
+  
 ### Conda Environment:
 
 This directory contains the files to setup the Conda environment for testing purposes
@@ -56,5 +67,5 @@ is installed by looking at the `git` tags and how many commits ahead this versio
 \d+.\d+.\d+(?\+\d+-[a-z0-9]+)
 ```
 If the version of this commit is the same as a `git` tag, the installed version is the same as the tag, 
-e.g. `openff-0.1.2`, otherwise it will be appended with `+X` where `X` is the number of commits 
+e.g. `evaluator-0.1.2`, otherwise it will be appended with `+X` where `X` is the number of commits 
 ahead from the last tag, and then `-YYYYYY` where the `Y`'s are replaced with the `git` commit hash.
