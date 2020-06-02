@@ -3,6 +3,9 @@ OpenFF Maintainer Dashboard
 
 This repostiory tracks the status of the core pieces of infrastructure built, maintained and heavily used by the Open Force Field consortium.
 
+OpenEye License status: ![OE License](https://github.com/openforcefield/status/workflows/OE%20License/badge.svg)
+
+
 | Package | Tests | Documentation | Coverage | LGTM |
 |---|---|---|---|---|
 | **OpenFF Toolkit** | [![Tests](https://github.com/openforcefield/openforcefield/workflows/CI/badge.svg)](https://github.com/openforcefield/openforcefield/actions?query=branch%3Amaster+workflow%3ACI) | [![Documentation Status](https://readthedocs.org/projects/open-forcefield-toolkit/badge/?version=latest)](https://open-forcefield-toolkit.readthedocs.io/en/latest/?badge=latest) | [![codecov.io](https://codecov.io/github/openforcefield/openforcefield/coverage.svg?branch=master)](https://codecov.io/github/openforcefield/openforcefield?branch=master) | [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/openforcefield/openforcefield.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/openforcefield/openforcefield/context:python)
