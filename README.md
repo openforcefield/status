@@ -1,7 +1,7 @@
 OpenFF Maintainer Dashboard
 ===========================
 
-This repostiory tracks the status of the core pieces of infrastructure built, mainted and used by the Open Force Field consortium.
+This repostiory tracks the status of the core pieces of infrastructure built, maintained and heavily used by the Open Force Field consortium.
 
 See [STATUS.md](https://github.com/openforcefield/openff/blob/master/STATUS.md)
 
