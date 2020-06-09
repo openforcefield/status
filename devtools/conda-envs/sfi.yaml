@@ -1,0 +1,10 @@
+name: sfi
+
+channels:
+  - conda-forge
+
+dependencies:
+  - pip
+  - constructor
+# not sure if constructor pulls in cookiecutter
+  - cookiecutter
