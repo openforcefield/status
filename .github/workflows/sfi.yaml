@@ -1,9 +1,12 @@
 name: CI
 
 on:
-  schedule:
-    #   (from https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-    - cron: "0 0 * * *"
+  pull_request:
+    branches:
+    # I think this is necessary to trigger it in PR
+    - master
+  schedule:0 0 * * 0
+    - cron: "0 0 * * 0"
 
 jobs:
   test:
