@@ -5,7 +5,7 @@ on:
     branches:
     # I think this is necessary to trigger it in PR
     - master
-  schedule:0 0 * * 0
+  schedule:
     - cron: "0 0 * * 0"
 
 jobs:
