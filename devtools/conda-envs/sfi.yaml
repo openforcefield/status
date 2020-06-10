@@ -1,10 +1,11 @@
-name: sfi
+name: _constructor_cutter
 
 channels:
+  - defaults
   - conda-forge
 
 dependencies:
-  - pip
+  - conda-build
+  - conda<4.7
   - constructor
-# not sure if constructor pulls in cookiecutter
   - cookiecutter

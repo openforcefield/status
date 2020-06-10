@@ -1,4 +1,4 @@
-name: CI
+name: sfi
 
 on:
   pull_request:
@@ -49,13 +49,9 @@ jobs:
         conda info
         conda list
 
-    - name: Install installer
-      shell: bash -l {0}
-      run: |
-        git clone https://github.com/openforcefield/toolkit-installer-constructor
-
     - name: Run the installer
       shell: bash -l {0}
       run: |
+        git clone https://github.com/openforcefield/toolkit-installer-constructor
         cd toolkit-installer-constructor
         python run.py
