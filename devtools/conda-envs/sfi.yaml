@@ -1,4 +1,4 @@
-name: _constructor_cutter
+name: constructor
 
 channels:
   - defaults
