@@ -52,6 +52,6 @@ jobs:
     - name: Run the installer
       shell: bash -l {0}
       run: |
-        git clone https://github.com/openforcefield/toolkit-installer-constructor
+        git clone https://github.com/mattwthompson/toolkit-installer-constructor
         cd toolkit-installer-constructor
         python run.py
