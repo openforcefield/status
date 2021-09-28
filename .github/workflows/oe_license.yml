@@ -21,7 +21,7 @@ jobs:
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - name: Additional info about the build
         shell: bash
@@ -30,8 +30,8 @@ jobs:
           df -h
           ulimit -a
 
-      # More info on options: https://github.com/goanpeca/setup-miniconda
-      - uses: goanpeca/setup-miniconda@v1
+      # More info on options: https://github.com/conda-incubator/setup-miniconda
+      - uses: conda-incubator/setup-miniconda@v2.1.1
         with:
           python-version: "3.7"
           channels: conda-forge,defaults,openeye
