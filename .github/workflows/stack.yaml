@@ -27,19 +27,19 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: openforcefield/openff-toolkit
-        path: repos
+        path: openff-toolkit
 
     - name: Checkout OpenFF Evaluator
       uses: actions/checkout@v2
       with:
         repository: openforcefield/openff-evaluator
-        path: repos
+        path: openff-evaluator
 
     - name: Checkout OpenFF Interchange
       uses: actions/checkout@v2
       with:
         repository: openforcefield/openff-interchange
-        path: repos
+        path: openff-interchange
 
     - name: Look around
       run: |
