@@ -16,3 +16,4 @@ dependencies:
   - qcengine
   - pip:
     - smirnoff-plugins
+    - git+https://github.com/openforcefield/smirnoff-plugins.git
