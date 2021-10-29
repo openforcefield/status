@@ -45,6 +45,11 @@ jobs:
       with:
         repository: openforcefield/openff-interchange
 
+    - name: Look around
+      run: |
+        pwd
+        ls -a
+
     - name: Install most recent development versions
       shell: bash -l {0}
       run: |
