@@ -45,7 +45,7 @@ jobs:
       run: |
         pwd
         ls -a
-        ls repos/
+        ls openff-*/
 
     - uses: conda-incubator/setup-miniconda@v2
       with:
