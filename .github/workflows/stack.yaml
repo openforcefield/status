@@ -20,13 +20,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: conda-incubator/setup-miniconda@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-        mamba-version: "*"
-        environment-file: devtools/conda-envs/full.yaml
-        auto-activate-base: false
-
     # Each of these checkouts can be done on a feature branch
     # https://github.com/actions/checkout#checkout-a-different-branch
 
@@ -49,6 +42,13 @@ jobs:
       run: |
         pwd
         ls -a
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        mamba-version: "*"
+        environment-file: devtools/conda-envs/full.yaml
+        auto-activate-base: false
 
     - name: Install most recent development versions
       shell: bash -l {0}
