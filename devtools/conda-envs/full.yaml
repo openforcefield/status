@@ -6,6 +6,7 @@ dependencies:
   - openff-evaluator
   - openff-interchange
   - pytest
+  - pytest-randomly
   - pyyaml
   - toml
   - bson
@@ -13,3 +14,5 @@ dependencies:
   - qcelemental
   - qcportal
   - qcengine
+  - pip:
+    - smirnoff-plugins
