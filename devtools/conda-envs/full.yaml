@@ -2,6 +2,8 @@ name: full-stack-tests
 channels:
   - conda-forge
 dependencies:
+  - python
+  - pip
   - openff-toolkit
   - openff-evaluator
   - openff-interchange
@@ -14,6 +16,4 @@ dependencies:
   - qcelemental
   - qcportal
   - qcengine
-  - pip:
-    - smirnoff-plugins
-    - git+https://github.com/openforcefield/smirnoff-plugins.git
+  - smirnoff-plugins
