@@ -1,0 +1,15 @@
+name: full-stack-tests
+channels:
+  - conda-forge
+dependencies:
+  - openff-toolkit
+  - openff-evaluator
+  - openff-interchange
+  - pytest
+  - pyyaml
+  - toml
+  - bson
+  - msgpack-python
+  - qcelemental
+  - qcportal
+  - qcengine

@@ -1,0 +1,58 @@
+name: "Full-stack tests"
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macOS-latest, ubuntu-latest]
+        python-version: [3.8, 3.9]
+
+    env:
+      CI_OS: ${{ matrix.os }}
+      PYVER: ${{ matrix.python-version }}
+      COV: --cov=openff/units --cov-report=xml --cov-config=setup.cfg --cov-append
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        mamba-version: "*"
+        environment-file: devtools/conda-envs/full.yaml
+        auto-activate-base: false
+
+    # Each of these checkouts can be done on a feature branch
+    # https://github.com/actions/checkout#checkout-a-different-branch
+
+    - name: Checkout OpenFF Toolkit
+      uses: actions/checkout@v2
+      with:
+        repository: openforcefield/openff-toolkit
+
+    - name: Checkout OpenFF Evaluator
+      uses: actions/checkout@v2
+      with:
+        repository: openforcefield/openff-evaluator
+
+    - name: Checkout OpenFF Interchange
+      uses: actions/checkout@v2
+      with:
+        repository: openforcefield/openff-interchange
+
+    - name: Install most recent development versions
+      shell: bash -l {0}
+      run: |
+        python -m pip install -e openff-toolkit
+        python -m pip install -e openff-evaluator
+        python -m pip install -e openff-interchange
+
+    - name: Run 'everything all at once' tests
+      shell: bash -l {0}
+      run: |
+        python -m pytest -v openff-*/
