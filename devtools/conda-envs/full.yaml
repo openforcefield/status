@@ -17,3 +17,5 @@ dependencies:
   - qcportal
   - qcengine
   - smirnoff-plugins
+  - paprika
+  - conda
