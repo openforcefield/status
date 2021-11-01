@@ -1,6 +1,6 @@
 name: "Full-stack tests"
 
-on: push
+on: [push, workflow_dispatch]
 
 jobs:
   test:
