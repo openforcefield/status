@@ -57,6 +57,9 @@ jobs:
     - name: Install most recent development versions
       shell: bash -l {0}
       run: |
+        conda remove --force openff-interchange -y
+        conda remove --force openff-evaluator -y
+        conda remove --force openff-toolkit -y
         python -m pip install -e openff-toolkit/
         python -m pip install -e openff-evaluator/
         python -m pip install -e openff-interchange/
