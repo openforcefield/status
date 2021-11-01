@@ -9,6 +9,9 @@ dependencies:
   - openff-interchange
   - pytest
   - pytest-randomly
+  - pytest-xdist
+  - requests
+  - requests-mock
   - pyyaml
   - toml
   - bson
