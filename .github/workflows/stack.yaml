@@ -18,25 +18,25 @@ jobs:
       COV: --cov=openff/units --cov-report=xml --cov-config=setup.cfg --cov-append
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
 
     # Each of these checkouts can be done on a feature branch
     # https://github.com/actions/checkout#checkout-a-different-branch
 
     - name: Checkout OpenFF Toolkit
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
       with:
         repository: openforcefield/openff-toolkit
         path: openff-toolkit
 
     - name: Checkout OpenFF Evaluator
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
       with:
         repository: openforcefield/openff-evaluator
         path: openff-evaluator
 
     - name: Checkout OpenFF Interchange
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
