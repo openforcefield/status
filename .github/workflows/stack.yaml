@@ -71,4 +71,4 @@ jobs:
     - name: Run 'everything all at once' tests
       shell: bash -l {0}
       run: |
-        python -m pytest -v openff-*/
+        python -m pytest openff-*/
