@@ -22,3 +22,5 @@ dependencies:
   - qcportal
   - qcengine
   - conda
+  - foyer
+  - mdanalysis
