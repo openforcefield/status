@@ -64,9 +64,13 @@ jobs:
         conda remove --force openff-interchange -y
         conda remove --force openff-evaluator -y
         conda remove --force openff-toolkit -y
-        python -m pip install -e openff-toolkit/
-        python -m pip install -e openff-evaluator/
-        python -m pip install -e openff-interchange/
+
+        pip install -e \
+          openff-toolkit/ \
+          openff-toolkit/utilities/test_plugins/ \
+          openffopenff-evaluator/ \
+          openff-interchange/ \
+          openff-interchange/plugins/
 
     - name: Run 'everything all at once' tests
       shell: bash -l {0}
