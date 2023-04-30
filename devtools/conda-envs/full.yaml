@@ -24,3 +24,4 @@ dependencies:
   - paprika
   - foyer
   - mdanalysis
+  - intermol
