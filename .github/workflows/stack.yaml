@@ -51,11 +51,11 @@ jobs:
         ls -a
         ls openff-*/
 
-    - uses: mamba-org/provision-with-micromamba@main
+    - uses: mamba-org/setup-micromamba@v1
       with:
         environment-file: devtools/conda-envs/full.yaml
         channel-priority: "flexible"
-        extra-specs: |
+        create-args: >-
           python=${{ matrix.python-version }}
 
     - name: Install most recent development versions
