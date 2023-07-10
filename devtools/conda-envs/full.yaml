@@ -5,6 +5,7 @@ dependencies:
   - python
   - pip
   - openff-toolkit >=0.14
+  - openff-units =0.2.0
   - openff-evaluator
   - openff-interchange >=0.3
   - pymbar
