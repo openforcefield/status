@@ -75,4 +75,7 @@ jobs:
     - name: Run 'everything all at once' tests
       shell: bash -l {0}
       run: |
-        python -m pytest openff-*/
+        python -m pytest -nauto \
+          openff-interchange/openff/interchange/ \
+          openff-toolkit/openff/toolkit/ \
+          openff-evaluator/openff/evaluator/

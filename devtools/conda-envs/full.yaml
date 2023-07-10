@@ -4,7 +4,7 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit
+  - openff-toolkit >=0.14
   - openff-evaluator
   - openff-interchange >=0.3
   - pymbar
