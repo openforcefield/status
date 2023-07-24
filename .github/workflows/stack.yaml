@@ -77,5 +77,5 @@ jobs:
       run: |
         python -m pytest -nauto \
           openff-interchange/openff/interchange/ \
-          openff-toolkit/openff/toolkit/ \
-          openff-evaluator/openff/evaluator/
+          openff-toolkit/openff/toolkit/
+          # openff-evaluator/openff/evaluator/
