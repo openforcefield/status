@@ -76,6 +76,7 @@ jobs:
       shell: bash -l {0}
       run: |
         python -m pytest -nauto \
+          --rootdir=/home/runner/work/status/status/ \
           openff-interchange/openff/interchange/_tests/ \
           openff-toolkit/openff/toolkit/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
