@@ -30,6 +30,7 @@ OpenEye License status: ![OE License](https://github.com/openforcefield/status/w
 [@lilyminium]: https://github.com/lilyminium
 [@Yoshanuikabundi]: https://github.com/Yoshanuikabundi
 [@chapincavender]: https://github.com/chapincavender
+[@jthorton]: https://github.com/jthorton
 
 ## Packages not under active maintenace
 
