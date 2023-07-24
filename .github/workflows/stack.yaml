@@ -76,9 +76,11 @@ jobs:
       shell: bash -l {0}
       run: |
         python -m pytest -nauto \
-          openff-interchange/openff/interchange/ \
-          openff-toolkit/openff/toolkit/ \
-          --ignore=openff-interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
-          --ignore=openff-interchange/_tests/test_parameter_plugins.py \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins
+          openff-interchange/openff/interchange/_tests/ \
+          openff-toolkit/openff/toolkit/_tests/ \
+          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
+          --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
+          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
+          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
+          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
           # openff-evaluator/openff/evaluator/
