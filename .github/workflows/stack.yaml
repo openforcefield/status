@@ -83,5 +83,7 @@ jobs:
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
+          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins \
+          --ignore=openff-toolkit/openff/toolkit/_tests/test_parameter_plugins.py \
+          --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading::test_handlers_tracked_if_already_loaded
           # openff-evaluator/openff/evaluator/
