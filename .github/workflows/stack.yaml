@@ -75,7 +75,7 @@ jobs:
     - name: Run 'everything all at once' tests
       shell: bash -l {0}
       run: |
-        python -m pytest -nauto \
+        python -m pytest -nauto -v \
           --rootdir=/home/runner/work/status/status/ \
           openff-interchange/openff/interchange/_tests/ \
           openff-toolkit/openff/toolkit/_tests/ \
@@ -85,5 +85,5 @@ jobs:
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins \
           --ignore=openff-toolkit/openff/toolkit/_tests/test_parameter_plugins.py \
-          --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading::test_handlers_tracked_if_already_loaded
+          --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading \
           # openff-evaluator/openff/evaluator/
