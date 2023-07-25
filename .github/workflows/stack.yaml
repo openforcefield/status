@@ -75,7 +75,7 @@ jobs:
     - name: Run 'everything all at once' tests
       shell: bash -l {0}
       run: |
-        python -m pytest -nauto -v \
+        python -m pytest -v \
           --rootdir=/home/runner/work/status/status/ \
           openff-interchange/openff/interchange/_tests/ \
           openff-toolkit/openff/toolkit/_tests/ \
