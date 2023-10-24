@@ -4,10 +4,10 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit >=0.14
+  - openff-toolkit =0.14.4
   - openff-units =0.2.0
   - openff-evaluator
-  - openff-interchange >=0.3
+  - openff-interchange =0.3.13
   - pymbar
   - pytest
   - pytest-randomly
@@ -21,7 +21,7 @@ dependencies:
   - qcelemental
   - qcportal
   - qcengine
-  - smirnoff-plugins >=0.0.4
+  - smirnoff-plugins =2023
   - paprika
   - foyer
   - mdanalysis
