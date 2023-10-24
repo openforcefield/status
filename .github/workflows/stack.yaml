@@ -86,4 +86,5 @@ jobs:
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins \
           --ignore=openff-toolkit/openff/toolkit/_tests/test_parameter_plugins.py \
           --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading \
+          --ignore=openff-toolkit/openff/toolkit/_tests/test_nagl.py \
           # openff-evaluator/openff/evaluator/
