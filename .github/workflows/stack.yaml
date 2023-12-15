@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: "0 1 * * *"
 
+defaults:
+  run:
+    shell: bash -leo pipefail {0} {0}
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -19,47 +23,38 @@ jobs:
     env:
       CI_OS: ${{ matrix.os }}
       PYVER: ${{ matrix.python-version }}
-      COV: --cov=openff/units --cov-report=xml --cov-config=setup.cfg --cov-append
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     # Each of these checkouts can be done on a feature branch
     # https://github.com/actions/checkout#checkout-a-different-branch
 
     - name: Checkout OpenFF Toolkit
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-toolkit
         path: openff-toolkit
 
     - name: Checkout OpenFF Evaluator
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-evaluator
         path: openff-evaluator
 
     - name: Checkout OpenFF Interchange
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
 
-    - name: Look around
-      run: |
-        pwd
-        ls -a
-        ls openff-*/
-
-    - uses: mamba-org/provision-with-micromamba@main
+    - name: Set up conda environment
+      uses: mamba-org/setup-micromamba@v1
       with:
         environment-file: devtools/conda-envs/full.yaml
-        channel-priority: "flexible"
-        extra-specs: |
-          python=${{ matrix.python-version }}
+        create-args: python=${{ matrix.python-version }}
 
     - name: Install most recent development versions
-      shell: bash -l {0}
       run: |
         micromamba remove --force openff-interchange -y
         micromamba remove --force openff-evaluator -y
@@ -73,10 +68,8 @@ jobs:
           openff-interchange/plugins/
 
     - name: Run 'everything all at once' tests
-      shell: bash -l {0}
       run: |
-        python -m pytest -v \
-          --rootdir=. \
+        python -m pytest -v -nauto --rootdir=. \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
