@@ -32,11 +32,17 @@ jobs:
 
     # Only check out the repos whose tests directly run; development
     # installs of other packages are brought in via pip via micromamba
-    - name: Checkout OpenFF Interchange
+    - name: Checkout Interchange
       uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
+
+    - name: Checkout OpenFF Fragmenter
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-fragmenter
+        path: openff-fragmenter
 
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
@@ -46,15 +52,18 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        micromamba remove --force openff-evaluator -y
+        micromamba remove --force openff-fragmenter -y
+        micromamba remove --force openff-interchange -y
 
         python -m pip install -e \
+          openff-fragmenter \
           openff-interchange/ \
           openff-interchange/plugins/
 
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest -v -nauto --rootdir=. \
+          openff-fragmenter/openff/fragmenter/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
