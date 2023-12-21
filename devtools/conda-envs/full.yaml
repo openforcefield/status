@@ -4,9 +4,9 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit =0.14.4
+  - openff-toolkit =0.14.5
   - openff-evaluator
-  - openff-interchange =0.3.13
+  - openff-interchange =0.3.18
   - pymbar
   - pytest
   - pytest-randomly
@@ -25,3 +25,8 @@ dependencies:
   # foyer  # needs a release >0.12.0
   - mdanalysis
   - intermol
+  - pip:
+    - git+https://github.com/openforcefield/openff-toolkit.git@main
+    - git+https://github.com/openforcefield/openff-utilities.git@main
+    - git+https://github.com/openforcefield/openff-units.git@main
+    - git+https://github.com/openforcefield/openff-models.git@main
