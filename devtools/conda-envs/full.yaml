@@ -20,11 +20,7 @@ dependencies:
   - qcelemental
   - qcportal
   - qcengine
-  - smirnoff-plugins =2023
-  - paprika
-  # foyer  # needs a release >0.12.0
-  - mdanalysis
-  - intermol
+  - openeye-toolkits
   - pip:
     - git+https://github.com/openforcefield/openff-toolkit.git@main
     - git+https://github.com/openforcefield/openff-utilities.git@main
