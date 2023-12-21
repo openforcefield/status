@@ -18,11 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [macOS-latest, ubuntu-latest]
-        python-version: ["3.9", "3.10"]
+        python-version: ["3.9", "3.10", "3.11"]
 
     env:
-      CI_OS: ${{ matrix.os }}
-      PYVER: ${{ matrix.python-version }}
+      OE_LICENSE: ${{ github.workspace }}/oe_license.txt
 
     steps:
     - uses: actions/checkout@v4
@@ -30,23 +29,19 @@ jobs:
     # Each of these checkouts can be done on a feature branch
     # https://github.com/actions/checkout#checkout-a-different-branch
 
-    - name: Checkout OpenFF Toolkit
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-toolkit
-        path: openff-toolkit
-
-    - name: Checkout OpenFF Evaluator
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-evaluator
-        path: openff-evaluator
-
-    - name: Checkout OpenFF Interchange
+    # Only check out the repos whose tests directly run; development
+    # installs of other packages are brought in via pip via micromamba
+    - name: Checkout Interchange
       uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
+
+    - name: Checkout OpenFF Fragmenter
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-fragmenter
+        path: openff-fragmenter
 
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
@@ -54,22 +49,25 @@ jobs:
         environment-file: devtools/conda-envs/full.yaml
         create-args: python=${{ matrix.python-version }}
 
+    - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
+      env:
+        OE_LICENSE_TEXT: ${{ secrets.OE_LICENSE }}
+      run: echo "${OE_LICENSE_TEXT}" > ${OE_LICENSE}
+
     - name: Install most recent development versions
       run: |
+        micromamba remove --force openff-fragmenter -y
         micromamba remove --force openff-interchange -y
-        micromamba remove --force openff-evaluator -y
-        micromamba remove --force openff-toolkit -y
 
         python -m pip install -e \
-          openff-toolkit/ \
-          openff-toolkit/utilities/test_plugins/ \
-          openff-evaluator/ \
+          openff-fragmenter \
           openff-interchange/ \
           openff-interchange/plugins/
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest -v -nauto --rootdir=. \
+        python -m pytest -nauto --rootdir=. --durations=20 \
+          openff-fragmenter/openff/fragmenter/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
