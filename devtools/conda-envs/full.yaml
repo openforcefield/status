@@ -22,6 +22,8 @@ dependencies:
   - qcportal
   - qcengine
   - openeye-toolkits
+  - gromacs =2023.3=nompi_*_101
+  - intermol
   - pip:
     - git+https://github.com/openforcefield/openff-toolkit.git@main
     - git+https://github.com/openforcefield/openff-utilities.git@main
