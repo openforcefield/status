@@ -1,5 +1,6 @@
 name: full-stack-tests
 channels:
+  - openeye
   - conda-forge
 dependencies:
   - python
