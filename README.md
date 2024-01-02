@@ -2,7 +2,8 @@
 
 This repostiory tracks the status of the core pieces of infrastructure built, maintained and heavily used by the Open Force Field consortium.
 
-OpenEye License status: ![OE License](https://github.com/openforcefield/status/workflows/OE%20License/badge.svg)
+OpenEye License status:
+[![OE License](https://github.com/openforcefield/status/actions/workflows/oe_license.yml/badge.svg?branch=main)](https://github.com/openforcefield/status/actions/workflows/oe_license.yml)
 
 | Package | Contact | Tests | Documentation | Coverage | Conda build | pre-commit CI
 |:--|:--|:--|:--|:--|:--|:--
