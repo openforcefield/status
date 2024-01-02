@@ -2,7 +2,6 @@ name: OE License
 
 on:
   push:
-  pull_request:
   workflow_dispatch:
   schedule:
     - cron: "0 2 * * *"
@@ -32,4 +31,4 @@ jobs:
         run: echo "${ENC_OE_LICENSE}" > ${OE_LICENSE}
 
       - name: Check OpenEye license
-        run: python -c "import openeye; assert openeye.OEChemIsLicensed()"
+        run: python -c "import openeye; assert openeye.OEChemIsLicensed(), 'OpenEye licenses out of date!'"
