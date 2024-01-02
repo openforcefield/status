@@ -2,17 +2,15 @@ name: OE License
 
 on:
   push:
-    branches:
-      - "master"
   pull_request:
-    branches:
-      - "master"
   workflow_dispatch:
   schedule:
-    # Nightly tests run on master by default:
-    #   Scheduled workflows run on the latest commit on the default or base branch.
-    #   (from https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-    - cron: "0 0 * * *"
+    - cron: "0 2 * * *"
+
+defaults:
+  run:
+    shell: bash -leo pipefail {0} {0}
+
 
 jobs:
   test:
@@ -23,32 +21,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Additional info about the build
-        shell: bash
-        run: |
-          uname -a
-          df -h
-          ulimit -a
-
-      # More info on options: https://github.com/conda-incubator/setup-miniconda
-      - uses: conda-incubator/setup-miniconda@v3.0.1
+      - name: Set up conda environment
+        uses: mamba-org/setup-micromamba@v1
         with:
-          python-version: "3.7"
-          channels: conda-forge,defaults,openeye
-          auto-update-conda: true
-          auto-activate-base: true
-          show-channel-urls: true
-
-      - name: Install OpenEye tools
-        shell: bash -l {0}
-        run:  conda install openeye-toolkits
+          environment-file: devtools/conda-envs/oe_license_check.yaml
 
       - name: Decrypt OpenEye license
-        shell: bash
         env:
           ENC_OE_LICENSE: ${{ secrets.OE_LICENSE }}
         run: echo "${ENC_OE_LICENSE}" > ${OE_LICENSE}
 
       - name: Check OpenEye license
-        shell: bash -l {0}
         run: python -c "import openeye; assert openeye.OEChemIsLicensed()"
