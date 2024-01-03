@@ -20,7 +20,7 @@ dependencies:
   - bson
   - msgpack-python
   - qcelemental
-  - qcportal
+  - qcportal <0.50
   - qcengine
   - openeye-toolkits
   - gromacs =2023.3=nompi_*_101
