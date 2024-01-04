@@ -63,14 +63,12 @@ jobs:
     - name: Install most recent development versions
       run: |
         micromamba remove --force \
-          openff-fragmenter \
           openff-recharge \
           openff-interchange \
           -y
 
         python -m pip install -e \
           openff-recharge/ \
-          openff-fragmenter/ \
           openff-interchange/ \
           openff-interchange/plugins/
 
@@ -78,7 +76,6 @@ jobs:
       run: |
         python -m pytest -nauto --rootdir=. --durations=20 \
           openff-recharge/openff/recharge/_tests/ \
-          openff-fragmenter/openff/fragmenter/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
