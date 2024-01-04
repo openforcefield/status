@@ -62,13 +62,15 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        micromamba remove --force openff-fragmenter -y
-        micromamba remove --force openff-recharge -y
-        micromamba remove --force openff-interchange -y
+        micromamba remove --force \
+          openff-fragmenter \
+          openff-recharge \
+          openff-interchange \
+          -y
 
         python -m pip install -e \
-          openff-recharge \
-          openff-fragmenter \
+          openff-recharge/ \
+          openff-fragmenter/ \
           openff-interchange/ \
           openff-interchange/plugins/
 
