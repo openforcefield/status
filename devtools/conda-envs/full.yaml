@@ -25,8 +25,8 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal <0.50
-  - qcengine >=0.25
+  - qcportal >=0.50
+  - qcengine
   - xtb-python
   - geometric =1
 
