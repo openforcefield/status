@@ -43,6 +43,12 @@ jobs:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
+    - name: Checkout OpenFF Recharge
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-recharge
+        path: openff-recharge
+
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
       with:
@@ -56,18 +62,20 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        micromamba remove --force openff-fragmenter -y
-        micromamba remove --force openff-interchange -y
+        micromamba remove --force \
+          openff-recharge \
+          openff-interchange \
+          -y
 
         python -m pip install -e \
-          openff-fragmenter \
+          openff-recharge/ \
           openff-interchange/ \
           openff-interchange/plugins/
 
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest -nauto --rootdir=. --durations=20 \
-          openff-fragmenter/openff/fragmenter/_tests/ \
+          openff-recharge/openff/recharge/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
