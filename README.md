@@ -5,6 +5,9 @@ This repostiory tracks the status of the core pieces of infrastructure built, ma
 OpenEye License status:
 [![OE License](https://github.com/openforcefield/status/actions/workflows/oe_license.yml/badge.svg?branch=main)](https://github.com/openforcefield/status/actions/workflows/oe_license.yml)
 
+Full-stack status:
+[![Full-stack tests](https://github.com/openforcefield/status/actions/workflows/stack.yaml/badge.svg)](https://github.com/openforcefield/status/actions/workflows/stack.yaml)
+
 | Package | Contact | Tests | Documentation | Coverage | Conda build | pre-commit CI
 |:--|:--|:--|:--|:--|:--|:--
 | [**OpenFF Toolkit**](https://github.com/openforcefield/openff-toolkit) | [@j-wags] | [![Tests](https://github.com/openforcefield/openff-toolkit/actions/workflows/CI.yml/badge.svg)](https://github.com/openforcefield/openff-toolkit/actions/workflows/CI.yml) | [![Documentation Status](https://readthedocs.org/projects/open-forcefield-toolkit/badge/?version=latest)](https://open-forcefield-toolkit.readthedocs.io/en/latest/?badge=latest) | [![codecov.io](https://codecov.io/github/openforcefield/openff-toolkit/coverage.svg?branch=main)](https://codecov.io/github/openforcefield/openff-toolkit?branch=main) | [![conda-forge](https://img.shields.io/conda/v/conda-forge/openff-toolkit.svg)](https://anaconda.org/conda-forge/openff-toolkit) | [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/openforcefield/openff-toolkit/main.svg)](https://results.pre-commit.ci/latest/github/openforcefield/openff-toolkit/main)
