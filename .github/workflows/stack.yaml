@@ -49,6 +49,12 @@ jobs:
         repository: openforcefield/openff-recharge
         path: openff-recharge
 
+    - name: Checkout SMIRNOFF plugins
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/smirnoff-plugins
+        path: smirnoff-plugins
+
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
       with:
@@ -70,11 +76,13 @@ jobs:
         python -m pip install -e \
           openff-recharge/ \
           openff-interchange/ \
-          openff-interchange/plugins/
+          openff-interchange/plugins/ \
+          smirnoff-plugins/
 
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest -nauto --rootdir=. --durations=20 \
+        smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-recharge/openff/recharge/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
