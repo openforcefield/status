@@ -19,7 +19,7 @@ dependencies:
   - toml
   - bson
   - msgpack-python
-  - openeye-toolkits
+  - openeye-toolkits =2023.1
   - gromacs =2023.3=nompi_*_103
   - intermol
 
