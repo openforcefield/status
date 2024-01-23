@@ -82,7 +82,7 @@ jobs:
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest -nauto --rootdir=. --durations=20 \
-        smirnoff-plugins/smirnoff_plugins/_tests/ \
+          smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-recharge/openff/recharge/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
