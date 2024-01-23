@@ -54,6 +54,7 @@ jobs:
       with:
         repository: openforcefield/smirnoff-plugins
         path: smirnoff-plugins
+        ref: minimize-with-sage
 
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
