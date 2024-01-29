@@ -43,6 +43,12 @@ jobs:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
+    - name: Checkout OpenFF QCSubmit
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-qcsubmit
+        path: openff-qcsubmit
+
     - name: Checkout OpenFF Recharge
       uses: actions/checkout@v4
       with:
@@ -82,6 +88,7 @@ jobs:
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest -nauto --rootdir=. --durations=20 \
+          openff-qcsubmit/openff/qcsubmit/tests/ \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-recharge/openff/recharge/_tests/ \
           openff-interchange/openff/interchange/_tests/ \

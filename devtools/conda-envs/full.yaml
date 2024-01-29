@@ -9,8 +9,9 @@ dependencies:
   - openff-fragmenter
   - openff-interchange =0.3.18
   - openff-recharge
+  - openff-qcsubmit =0.50.2
   - pymbar
-  - pytest
+  - pytest =7
   - pytest-randomly
   - pytest-xdist
   - requests
