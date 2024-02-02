@@ -29,6 +29,14 @@ Full-stack status:
 
 \* will create OpenFF fork when development is needed
 
+| Package | Open issues | Open pull requests |
+|:--|:--|:--|
+| OpenFF Toolkit | ![GitHub issues](https://img.shields.io/github/issues/openforcefield/openff-toolkit) | ![GitHub pull requests](https://img.shields.io/github/issues-pr/openforcefield/openff-toolkit) |
+| Interchange | ![GitHub issues](https://img.shields.io/github/issues/openforcefield/openff-interchange) | ![GitHub pull requests](https://img.shields.io/github/issues-pr/openforcefield/openff-interchange) |
+| OpenFF Evaluator | ![GitHub issues](https://img.shields.io/github/issues/openforcefield/openff-evaluator) | ![GitHub pull requests](https://img.shields.io/github/issues-pr/openforcefield/openff-evaluator) |
+| OpenFF BespokeFit | ![GitHub issues](https://img.shields.io/github/issues/openforcefield/openff-bespokefit) | ![GitHub pull requests](https://img.shields.io/github/issues-pr/openforcefield/openff-bespokefit) |
+| OpenFF QCSubmit | ![GitHub issues](https://img.shields.io/github/issues/openforcefield/openff-qcsubmit) | ![GitHub pull requests](https://img.shields.io/github/issues-pr/openforcefield/openff-qcsubmit) |
+
 [@j-wags]: https://github.com/j-wags
 [@dotsdl]: https://github.com/dotsdl
 [@mattwthompson]: https://github.com/mattwthompson
