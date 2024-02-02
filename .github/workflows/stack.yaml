@@ -36,6 +36,7 @@ jobs:
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
+        ref: interop
 
     - name: Checkout OpenFF Fragmenter
       uses: actions/checkout@v4
