@@ -96,4 +96,4 @@ jobs:
           # openff-evaluator/openff/evaluator/
 
     - name: Run NAGL tests via pyargs
-      run: python -m pytest --pyargs "openff.nagl"
+      run: python -m pytest -nauto --pyargs "openff.nagl"
