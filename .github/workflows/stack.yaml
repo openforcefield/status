@@ -18,6 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macOS-latest, ubuntu-latest]
+        style: ["deployment", "bleeding-edge"]
         python-version: ["3.9", "3.10", "3.11"]
 
     env:
@@ -31,69 +32,39 @@ jobs:
 
     # Only check out the repos whose tests directly run; development
     # installs of other packages are brought in via pip via micromamba
-    - name: Checkout Interchange
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-interchange
-        path: openff-interchange
-
-    - name: Checkout OpenFF Fragmenter
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-fragmenter
-        path: openff-fragmenter
-
-    - name: Checkout OpenFF Recharge
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-recharge
-        path: openff-recharge
-
-    - name: Checkout SMIRNOFF plugins
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/smirnoff-plugins
-        path: smirnoff-plugins
-
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
       with:
         environment-file: devtools/conda-envs/full.yaml
         create-args: python=${{ matrix.python-version }}
 
+    # Here's where one could check out against feature branches
+    - name: Installing "bleeding edge" versions of some packages
+      if: matrix.style == 'bleeding-edge'
+      run: |
+        python -m pip install \
+          git+https://github.com/openforcefield/openff-toolkit.git@main \
+          git+https://github.com/openforcefield/openff-interchange.git@main \
+          git+https://github.com/openforcefield/openff-fragmenter.git@main \
+          git+https://github.com/openforcefield/openff-qcsubmit.git@main \
+          git+https://github.com/openforcefield/openff-nagl.git@main \
+          git+https://github.com/openforcefield/openff-utilities.git@main \
+          git+https://github.com/openforcefield/openff-units.git@main \
+          git+https://github.com/openforcefield/openff-models.git@main
+
     - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
       env:
         OE_LICENSE_TEXT: ${{ secrets.OE_LICENSE }}
       run: echo "${OE_LICENSE_TEXT}" > ${OE_LICENSE}
 
-    - name: Install most recent development versions
+    - name: Run tests via pyargs
       run: |
-        micromamba remove --force \
-          openff-recharge \
-          openff-interchange \
-          -y
-
-        python -m pip install -e \
-          openff-recharge/ \
-          openff-interchange/ \
-          openff-interchange/plugins/ \
-          smirnoff-plugins/
-
-    - name: Run 'everything all at once' tests
-      run: |
-        python -m pytest -nauto --rootdir=. --durations=20 \
-          smirnoff-plugins/smirnoff_plugins/_tests/ \
-          openff-recharge/openff/recharge/_tests/ \
-          openff-interchange/openff/interchange/_tests/ \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
-          --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
-          # --ignore=openff-toolkit/openff/toolkit/_tests/test_parameter_plugins.py \
-          # --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading \
-          # --ignore=openff-toolkit/openff/toolkit/_tests/test_nagl.py \
-          # openff-evaluator/openff/evaluator/
-
-    - name: Run NAGL tests via pyargs
-      run: python -m pytest -nauto --pyargs "openff.nagl"
+        python -m pytest -nauto \
+          --pyargs "openff.toolkit" \
+          --pyargs "openff.interchange" \
+          --pyargs "openff.fragmenter" \
+          --pyargs "openff.qcsubmit" \
+          --pyargs "openff.nagl" \
+          --pyargs "openff.utilities" \
+          --pyargs "openff.units" \
+          --pyargs "openff.models"
