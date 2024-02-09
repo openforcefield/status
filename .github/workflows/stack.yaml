@@ -94,3 +94,6 @@ jobs:
           # --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading \
           # --ignore=openff-toolkit/openff/toolkit/_tests/test_nagl.py \
           # openff-evaluator/openff/evaluator/
+
+    - name: Run NAGL tests via pyargs
+      run: python -m pytest -nauto --pyargs "openff.nagl"
