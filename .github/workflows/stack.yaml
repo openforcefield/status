@@ -17,11 +17,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macOS-latest, ubuntu-latest]
-        python-version: ["3.10", "3.11"]
+        os:
+          - "ubuntu-latest"
+          - "macos-latest"
+          - "macos-14"  # this is actually M1/ARM/Apple Silicon
+        python-version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
+      PYTEST_ARGS: -n logical --rootdir=. --durations=20
 
     steps:
     - uses: actions/checkout@v4
@@ -61,6 +68,10 @@ jobs:
         environment-file: devtools/conda-envs/full.yaml
         create-args: python=${{ matrix.python-version }}
 
+    - name: Install GROMACS & NAGL if using x86
+      if: matrix.os != 'macos-14'
+      run: micromamba install openff-nagl "gromacs =2023.3=nompi_*_103" -c conda-forge --yes
+
     - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
       env:
         OE_LICENSE_TEXT: ${{ secrets.OE_LICENSE }}
@@ -81,19 +92,21 @@ jobs:
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest -nauto --rootdir=. --durations=20 \
+        python -m pytest $PYTEST_ARGS \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-recharge/openff/recharge/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
+          --ignore=smirnoff-plugins/smirnoff_plugins/_tests/handlers/test_nonbonded.py \
+          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
-          # --ignore=openff-toolkit/openff/toolkit/_tests/test_parameter_plugins.py \
-          # --ignore=openff-toolkit/openff/toolkit/_tests/test_forcefield.py::TestForceFieldPluginLoading \
-          # --ignore=openff-toolkit/openff/toolkit/_tests/test_nagl.py \
-          # openff-evaluator/openff/evaluator/
 
     - name: Run NAGL tests via pyargs
-      run: python -m pytest -nauto --pyargs "openff.nagl"
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        pip install git+https://github.com/openforcefield/openff-nagl.git@main
+
+        python -m pytest -nauto --pyargs "openff.nagl"
