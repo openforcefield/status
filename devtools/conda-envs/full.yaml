@@ -29,6 +29,7 @@ dependencies:
   - qcengine
   - xtb-python
   - geometric =1
+  - psi4 =1.9
 
   - pip:
     - git+https://github.com/openforcefield/openff-toolkit.git@main
