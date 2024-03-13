@@ -50,12 +50,6 @@ jobs:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
-    - name: Checkout OpenFF Recharge
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-recharge
-        path: openff-recharge
-
     - name: Checkout SMIRNOFF plugins
       uses: actions/checkout@v4
       with:
@@ -80,12 +74,10 @@ jobs:
     - name: Install most recent development versions
       run: |
         micromamba remove --force \
-          openff-recharge \
           openff-interchange \
           -y
 
         python -m pip install -e \
-          openff-recharge/ \
           openff-interchange/ \
           openff-interchange/plugins/ \
           smirnoff-plugins/
@@ -94,7 +86,6 @@ jobs:
       run: |
         python -m pytest $PYTEST_ARGS \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
-          openff-recharge/openff/recharge/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=smirnoff-plugins/smirnoff_plugins/_tests/handlers/test_nonbonded.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
