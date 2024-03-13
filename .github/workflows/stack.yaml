@@ -82,6 +82,9 @@ jobs:
           openff-interchange/plugins/ \
           smirnoff-plugins/
 
+    - name: Install NumPy 2.0 beta 1
+      run: pip install numpy==2.0.0b1
+
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest $PYTEST_ARGS \
