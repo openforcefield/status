@@ -74,7 +74,7 @@ jobs:
         # this uninstalls Psi4 for some reason (MLK?)
         micromamba install openff-nagl "gromacs =2023.3=nompi_*_103" -c conda-forge --yes
 
-        micromamba install psi4 -c conda-forge --yes
+        micromamba install "psi4=1.9.0" -c conda-forge --yes
 
     - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
       env:
