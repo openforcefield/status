@@ -5,10 +5,9 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit =0.15.2
+  - openff-toolkit =0.15
   - openff-fragmenter
-  - openff-interchange =0.3.19
-  - openff-recharge
+  - openff-interchange =0.3
   - pymbar
   - pytest
   - pytest-randomly
