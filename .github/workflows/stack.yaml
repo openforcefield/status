@@ -80,7 +80,14 @@ jobs:
         python -m pip install -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
-          smirnoff-plugins/
+          smirnoff-plugins/ \
+
+    - name: "Environment information"
+      run: |
+        micromamba list
+        micromamba repoquery whoneeds cudatoolkit
+        python -c "import pint; print(f'{pint.__version__=}')"
+        python -c "import openff.units; print(f'{openff.units.__version__=}')"
 
     - name: Run 'everything all at once' tests
       run: |
