@@ -84,7 +84,9 @@ jobs:
           "pint==0.23"
 
     - name: "Environment information"
-      run: micromamba list
+      run: |
+        micromamba list
+        micromamba repoquery whoneeds cudatoolkit
 
     - name: Run 'everything all at once' tests
       run: |
