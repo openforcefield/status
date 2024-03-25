@@ -81,6 +81,10 @@ jobs:
           openff-interchange/ \
           openff-interchange/plugins/ \
           smirnoff-plugins/
+          "pint==0.23"
+
+    - name: "Environment information"
+      run: micromamba list
 
     - name: Run 'everything all at once' tests
       run: |
