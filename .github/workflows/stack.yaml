@@ -80,7 +80,7 @@ jobs:
         python -m pip install -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
-          smirnoff-plugins/
+          smirnoff-plugins/ \
           "pint==0.23"
 
     - name: "Environment information"
