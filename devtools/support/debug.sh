@@ -14,7 +14,7 @@ date
 echo "$OSTYPE" || echo "could not detect operating system"
 arch
 
-nvidia-smi || echo "no nvidia-smi, are you on a gpu node?"
+nvidia-smi || echo "no nvidia-smi, system either does not have an nvidia card or cuda is not properly configured"
 
 echo -e "\n=====================================CONDA======================================"
 which -a python
