@@ -22,7 +22,6 @@ jobs:
           - "macos-latest"
           - "macos-14"  # this is actually M1/ARM/Apple Silicon
         python-version:
-          - "3.9"
           - "3.10"
           - "3.11"
 
