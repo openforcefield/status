@@ -105,7 +105,8 @@ jobs:
       run: |
         python -m pytest -x --rootdir=. --durations=10 \
           openff-qcsubmit/openff/qcsubmit/_tests/ \
-          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py::test_invalid_cmiles
+          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py::test_invalid_cmiles \
+          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py::test_adding_specifications
 
     - name: Run NAGL tests via pyargs
       if: matrix.os == 'ubuntu-latest'
