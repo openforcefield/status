@@ -31,3 +31,4 @@ dependencies:
 
   - openff-qcsubmit ~=0.50
   - qcportal ==0.53
+  - qcarchivetesting
