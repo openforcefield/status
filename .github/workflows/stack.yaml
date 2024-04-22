@@ -103,7 +103,7 @@ jobs:
 
     - name: Run QC-adjacent tests
       run: |
-        python -m pytest $PYTEST_ARGS \
+        python -m pytest -x $PYTEST_ARGS \
           openff-qcsubmit/openff/qcsubmit/_tests/
 
     - name: Run NAGL tests via pyargs
