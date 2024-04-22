@@ -43,6 +43,12 @@ jobs:
         repository: openforcefield/openff-interchange
         path: openff-interchange
 
+    - name: Checkout QCSubmit
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-qcsubmit
+        path: openff-qcsubmit
+
     - name: Checkout OpenFF Fragmenter
       uses: actions/checkout@v4
       with:
@@ -79,7 +85,8 @@ jobs:
         python -m pip install -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
-          smirnoff-plugins/
+          smirnoff-plugins/ \
+          openff-qcsubmit/
 
     - name: Run 'everything all at once' tests
       run: |
@@ -93,6 +100,11 @@ jobs:
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
+
+    - name: Run QC-adjacent tests
+      run: |
+        python -m pytest $PYTEST_ARGS \
+          openff-qcsubmit/openff/qcsubmit/_tests/
 
     - name: Run NAGL tests via pyargs
       if: matrix.os == 'ubuntu-latest'
