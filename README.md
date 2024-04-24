@@ -6,7 +6,7 @@ OpenEye License status:
 [![OE License](https://github.com/openforcefield/status/actions/workflows/oe_license.yml/badge.svg?branch=main)](https://github.com/openforcefield/status/actions/workflows/oe_license.yml)
 
 Full-stack status:
-[![Full-stack tests](https://github.com/openforcefield/status/actions/workflows/stack.yaml/badge.svg)](https://github.com/openforcefield/status/actions/workflows/stack.yaml)
+[![Full-stack tests](https://github.com/openforcefield/status/actions/workflows/full-stack.yaml/badge.svg)](https://github.com/openforcefield/status/actions/workflows/full-stack.yaml)
 
 | Package | Contact | Tests | Documentation | Coverage | Conda build | pre-commit CI
 |:--|:--|:--|:--|:--|:--|:--
