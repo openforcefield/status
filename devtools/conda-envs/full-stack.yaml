@@ -5,7 +5,7 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit =0.15
+  - openff-toolkit ~=0.16
   - openff-fragmenter
   - openff-interchange =0.3
   - pymbar
@@ -32,3 +32,4 @@ dependencies:
   - openff-qcsubmit ~=0.50
   - qcarchivetesting
   - h5py
+
