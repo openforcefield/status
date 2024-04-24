@@ -103,7 +103,7 @@ jobs:
 
     - name: Run QC-adjacent tests
       run: |
-        python -m pytest -x --rootdir=. --durations=10 \
+        python -m pytest $PYTEST_ARGS \
           openff-qcsubmit/openff/qcsubmit/_tests/ \
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
