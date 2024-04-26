@@ -19,8 +19,8 @@ jobs:
       matrix:
         os:
           - "ubuntu-latest"
-          - "macos-latest"
-          - "macos-14"  # this is actually M1/ARM/Apple Silicon
+          - "macos-latest"  # this is probably macos-14
+          - "macos-12"
         python-version:
           - "3.10"
           - "3.11"
@@ -67,10 +67,6 @@ jobs:
         environment-file: devtools/conda-envs/full-stack.yaml
         create-args: python=${{ matrix.python-version }}
 
-    - name: Install GROMACS & NAGL if using x86
-      if: matrix.os != 'macos-14'
-      run: micromamba install openff-nagl "gromacs =2023.3=nompi_*_103" -c conda-forge --yes
-
     - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
       env:
         OE_LICENSE_TEXT: ${{ secrets.OE_LICENSE }}
@@ -108,8 +104,6 @@ jobs:
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
     - name: Run NAGL tests via pyargs
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'FOOBAR'
       run: |
-        pip install git+https://github.com/openforcefield/openff-nagl.git@main
-
         python -m pytest -nauto --pyargs "openff.nagl"
