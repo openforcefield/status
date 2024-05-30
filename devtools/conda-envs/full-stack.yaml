@@ -1,10 +1,12 @@
 name: full-stack-tests
 channels:
-  - openeye
+  - conda-forge/label/mdtraj_rc
   - conda-forge
+  - openeye
 dependencies:
   - python
   - pip
+  - mdtraj =1.10.0rc2
   - openff-toolkit ~=0.16
   - openff-fragmenter
   - openff-interchange ~=0.3.25
