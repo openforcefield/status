@@ -1,6 +1,7 @@
 name: full-stack-tests
 channels:
   - openeye
+  - conda-forge/label/openmm_rc
   - conda-forge
 dependencies:
   - python
