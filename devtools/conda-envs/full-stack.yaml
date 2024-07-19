@@ -35,4 +35,5 @@ dependencies:
 
   - openff-nagl
 
-  # gromacs >=2023.4
+  - gromacs >=2024
+  - lammps >=2023.08.02
