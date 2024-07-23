@@ -24,12 +24,12 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal ~=0.50
+  - qcportal ~=0.56
   - qcengine
   - xtb-python
   - geometric =1
 
-  - openff-qcsubmit ~=0.50
+  - openff-qcsubmit ~=0.52
   - qcarchivetesting
   - h5py
 
