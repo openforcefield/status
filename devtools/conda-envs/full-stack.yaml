@@ -37,3 +37,8 @@ dependencies:
 
   - gromacs >=2024
   - lammps >=2023.08.02
+
+  - pydantic =2
+  - pip:
+    - git+https://github.com/openforcefield/openff-models.git@pydantic-2-redo
+    - git+https://github.com/openforcefield/openff-interchange.git@develop
