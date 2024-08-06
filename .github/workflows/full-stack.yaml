@@ -98,10 +98,6 @@ jobs:
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
 
     - name: Run QC-adjacent tests
-      # QCarchive 0.55-0.56 doesn't support Apple Silicon, but we want to test QCSubmit
-      # against the most recent versions of upstreams
-      # https://github.com/MolSSI/QCFractal/issues/846
-      if: matrix.os != 'macos-latest'
       run: |
         python -m pytest $PYTEST_ARGS \
           openff-qcsubmit/openff/qcsubmit/_tests/ \
