@@ -41,6 +41,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-interchange
+        ref: develop
         path: openff-interchange
 
     - name: Checkout QCSubmit
