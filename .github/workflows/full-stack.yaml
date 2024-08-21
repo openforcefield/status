@@ -60,6 +60,17 @@ jobs:
       with:
         repository: openforcefield/smirnoff-plugins
         path: smirnoff-plugins
+    - name: Checkout OpenFF Units
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-units
+        path: openff-units
+
+    - name: Checkout OpenFF Models
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-models
+        path: openff-models
 
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
@@ -81,8 +92,10 @@ jobs:
         python -m pip install -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
-          smirnoff-plugins/ \
-          openff-qcsubmit/
+          openff-qcsubmit/ \
+          openff-units/ \
+          openff-models/ \
+          smirnoff-plugins/
 
     - name: Run 'everything all at once' tests
       run: |
