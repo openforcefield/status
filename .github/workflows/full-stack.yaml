@@ -105,7 +105,7 @@ jobs:
           smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           openff-models/openff/models/_tests/ \
-          openff-units/openff/models/_tests/ \
+          openff-units/openff/units/_tests/ \
           openff-fragmenter/openff/fragmenter/_tests/ \
           --ignore=smirnoff-plugins/smirnoff_plugins/_tests/handlers/test_nonbonded.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
