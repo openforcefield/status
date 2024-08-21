@@ -54,6 +54,7 @@ jobs:
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
+        ref: no-duplicate-runslow
 
     - name: Checkout SMIRNOFF plugins
       uses: actions/checkout@v4
