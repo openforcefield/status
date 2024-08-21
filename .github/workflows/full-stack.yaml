@@ -95,6 +95,7 @@ jobs:
           openff-qcsubmit/ \
           openff-units/ \
           openff-models/ \
+          openff-fragmenter/ \
           smirnoff-plugins/
 
     - name: Run 'everything all at once' tests
@@ -102,6 +103,9 @@ jobs:
         python -m pytest $PYTEST_ARGS \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
+          openff-models/openff/models/_tests/ \
+          openff-units/openff/models/_tests/ \
+          openff-fragmenter/openff/fragmenter/_tests/ \
           --ignore=smirnoff-plugins/smirnoff_plugins/_tests/handlers/test_nonbonded.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
