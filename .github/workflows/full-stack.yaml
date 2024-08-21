@@ -103,6 +103,7 @@ jobs:
       run: |
         python -m pytest $PYTEST_ARGS \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
+          openff-toolkit/openff/toolkit/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           openff-models/openff/models/_tests/ \
           openff-units/openff/units/_tests/ \
