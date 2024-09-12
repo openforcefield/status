@@ -24,7 +24,7 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal  # hope to pull down 0.56 or newer
+  - qcportal ~=0.56  # hope to pull down 0.56 or newer
   - qcengine
   - xtb-python
   - geometric =1
@@ -37,4 +37,5 @@ dependencies:
 
   - gromacs >=2024
   # https://github.com/conda-forge/lammps-feedstock/issues/207
-  - lammps >=2023.08.02,<2024.06.27
+  - lammps >=2023.08.02
+  - openmpi =4
