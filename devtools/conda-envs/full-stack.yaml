@@ -24,7 +24,7 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal ~=0.56  # hope to pull down 0.56 or newer
+  - qcportal ~=0.56
   - qcengine
   - xtb-python
   - geometric =1
