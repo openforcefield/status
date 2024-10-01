@@ -5,7 +5,7 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit ~=0.16
+  - openff-toolkit =0.16.4=pyhc2fc6b4_3
   - openff-fragmenter
   - openff-interchange ~=0.3.25
   - pymbar
