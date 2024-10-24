@@ -5,9 +5,9 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit ~=0.16
+  - openff-toolkit
   - openff-fragmenter
-  - openff-interchange ~=0.3.25
+  - openff-interchange
   - pymbar
   - pytest
   - pytest-randomly
@@ -18,18 +18,17 @@ dependencies:
   - toml
   - bson
   - msgpack-python
-  - openeye-toolkits =2023.2
+  - openeye-toolkits
+  - rdkit !=2024.03.6,!=2024.09.1
   - intermol
-  - smirnoff-plugins
 
     # Recharge
   - qcelemental
   - qcportal ~=0.56
   - qcengine
-  - xtb-python
-  - geometric =1
+  - geometric
 
-  - openff-qcsubmit ~=0.52
+  - openff-qcsubmit
   - qcarchivetesting
   - h5py
 
