@@ -56,11 +56,6 @@ jobs:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
-    - name: Checkout SMIRNOFF plugins
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/smirnoff-plugins
-        path: smirnoff-plugins
     - name: Checkout OpenFF Units
       uses: actions/checkout@v4
       with:
@@ -96,14 +91,11 @@ jobs:
           openff-qcsubmit/ \
           openff-units/ \
           openff-models/ \
-          smirnoff-plugins/
 
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest $PYTEST_ARGS \
-          smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
-          --ignore=smirnoff-plugins/smirnoff_plugins/_tests/handlers/test_nonbonded.py \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
           --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
