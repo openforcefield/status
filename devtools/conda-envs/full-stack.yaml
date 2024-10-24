@@ -5,9 +5,9 @@ channels:
 dependencies:
   - python
   - pip
-  - openff-toolkit ~=0.16
+  - openff-toolkit
   - openff-fragmenter
-  - openff-interchange ~=0.3.25
+  - openff-interchange
   - pymbar
   - pytest
   - pytest-randomly
@@ -24,12 +24,11 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal ~=0.56  # hope to pull down 0.56 or newer
+  - qcportal # hope to pull down 0.56 or newer
   - qcengine
-  - xtb-python
-  - geometric =1
+  - geometric
 
-  - openff-qcsubmit ~=0.52
+  - openff-qcsubmit
   - qcarchivetesting
   - h5py
 
