@@ -4,7 +4,7 @@ channels:
   - conda-forge/label/openmm_rc
   - conda-forge
 dependencies:
-  - openmm ==8.2.0beta
+  - openmm ==8.2.0rc1
   - python
   - pip
   - openff-toolkit ~=0.16
