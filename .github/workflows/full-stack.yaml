@@ -25,6 +25,10 @@ jobs:
           - "3.10"
           - "3.11"
           - "3.12"
+        openmm-platform:
+          - "reference/CPU"
+          - "CUDA"
+
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
@@ -91,6 +95,22 @@ jobs:
           openff-qcsubmit/ \
           openff-units/ \
           openff-models/
+
+    - name: Install OpenMM from PyPI
+      if: matrix.openmm-platform == 'reference/CPU'
+      run: |
+        pip install --pre
+          --index-url https://test.pypi.org/simple/ \
+          --extra-index-url https://pypi.org/simple/ \
+          openmm
+
+    - name: Install OpenMM from PyPI with CUDA support
+      if: matrix.openmm-platform == 'CUDA'
+      run: |
+        pip install --pre
+          --index-url https://test.pypi.org/simple/ \
+          --extra-index-url https://pypi.org/simple/ \
+          openmm[cuda12]
 
     - name: Run 'everything all at once' tests
       run: |
