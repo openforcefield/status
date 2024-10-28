@@ -90,7 +90,6 @@ jobs:
 
         python -m pip install -e \
           openff-interchange/ \
-          openff-interchange/plugins/ \
           openff-qcsubmit/ \
           openff-units/ \
           openff-models/
