@@ -29,7 +29,6 @@ jobs:
           - "reference/CPU"
           - "CUDA"
 
-
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
       PYTEST_ARGS: -x -n logical --rootdir=. --durations=20
