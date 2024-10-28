@@ -105,7 +105,7 @@ jobs:
           openmm
 
     - name: Install OpenMM from PyPI with CUDA support
-      if: matrix.openmm-platform == 'CUDA'
+      if: ${{ matrix.openmm-platform == 'CUDA' && startsWith(matrix.os, 'ubuntu') }}
       run: |
         pip install --pre \
           --index-url https://test.pypi.org/simple/ \
