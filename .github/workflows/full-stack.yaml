@@ -111,6 +111,9 @@ jobs:
           --extra-index-url https://pypi.org/simple/ \
           "openmm[cuda12]==8.2.0rc1"
 
+    - name: Run single-water minimization with OpenMM
+      run: python -m pytest $PYTEST_ARGS test_minimize_water.py
+
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest $PYTEST_ARGS \
