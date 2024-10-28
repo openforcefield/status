@@ -101,7 +101,7 @@ jobs:
         pip install --pre \
           --index-url https://test.pypi.org/simple/ \
           --extra-index-url https://pypi.org/simple/ \
-          openmm
+          "openmm==8.2.0rc1"
 
     - name: Install OpenMM from PyPI with CUDA support
       if: ${{ matrix.openmm-platform == 'CUDA' && startsWith(matrix.os, 'ubuntu') }}
@@ -109,7 +109,7 @@ jobs:
         pip install --pre \
           --index-url https://test.pypi.org/simple/ \
           --extra-index-url https://pypi.org/simple/ \
-          openmm[cuda12]
+          "openmm[cuda12]==8.2.0rc1"
 
     - name: Run 'everything all at once' tests
       run: |
