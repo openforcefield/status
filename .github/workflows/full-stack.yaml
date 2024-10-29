@@ -95,8 +95,8 @@ jobs:
           openff-units/ \
           openff-models/
 
-    - name: Install OpenMM from PyPI
-      if: matrix.openmm-platform == 'reference/CPU'
+    - name: Install OpenMM from PyPI on Linux and ARM macOS
+      if: ${{ matrix.openmm-platform == 'reference/CPU' && endsWith(matrix.os, 'latest') }}
       run: |
         pip install --pre \
           --index-url https://test.pypi.org/simple/ \
