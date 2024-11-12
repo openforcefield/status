@@ -42,6 +42,7 @@ jobs:
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
+        fetch-tags: true
 
     - name: Checkout QCSubmit
       uses: actions/checkout@v4
