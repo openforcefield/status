@@ -43,6 +43,7 @@ jobs:
         repository: openforcefield/openff-interchange
         path: openff-interchange
         fetch-depth: 0
+        fetch-tags: true
 
     - name: Checkout QCSubmit
       uses: actions/checkout@v4
@@ -82,10 +83,6 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        micromamba remove --force \
-          openff-interchange \
-          -y
-
         python -m pip install -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
