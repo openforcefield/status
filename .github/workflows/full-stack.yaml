@@ -72,7 +72,6 @@ jobs:
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v2
       with:
-        micromamba-version: '1.5.10-0'  # Doesn't seem to be fixed yet (2.0.1-0)
         environment-file: devtools/conda-envs/full-stack.yaml
         create-args: python=${{ matrix.python-version }}
 
