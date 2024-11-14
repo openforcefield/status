@@ -63,12 +63,6 @@ jobs:
         repository: openforcefield/openff-units
         path: openff-units
 
-    - name: Checkout OpenFF Models
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/openff-models
-        path: openff-models
-
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v1
       with:
@@ -87,8 +81,7 @@ jobs:
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
-          openff-units/ \
-          openff-models/
+          openff-units/
 
     - name: Run 'everything all at once' tests
       run: |
