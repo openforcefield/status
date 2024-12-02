@@ -88,9 +88,11 @@ jobs:
           openff-qcsubmit/ \
           openff-units/ \
           openff-utilities/
+        pip list
 
     - name: Run 'everything all at once' tests
       run: |
+        pip list
         python -m pytest $PYTEST_ARGS \
           openff-utilities/openff/utilities/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
