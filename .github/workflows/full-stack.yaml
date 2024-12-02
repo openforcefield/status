@@ -69,6 +69,12 @@ jobs:
         repository: openforcefield/smirnoff-plugins
         path: smirnoff-plugins
 
+    - name: Checkout OpenFF Utilities
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-utilities
+        path: openff-utilities
+
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v2
       with:
@@ -87,12 +93,15 @@ jobs:
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
           openff-units/ \
+          openff-utilities/ \
           smirnoff-plugins/
+        pip list
 
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest $PYTEST_ARGS \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
+          openff-utilities/openff/utilities/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py
 
