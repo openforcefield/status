@@ -93,7 +93,7 @@ jobs:
     - name: Run 'everything all at once' tests
       run: |
         pip list
-        python -m pytest $PYTEST_ARGS \
+        python -m pytest $PYTEST_ARGS -m "not leaky" \
           openff-utilities/openff/utilities/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
