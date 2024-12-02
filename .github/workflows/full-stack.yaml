@@ -63,6 +63,12 @@ jobs:
         repository: openforcefield/openff-units
         path: openff-units
 
+    - name: Checkout SMIRNOFF plugins
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/smirnoff-plugins
+        path: smirnoff-plugins
+
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v2
       with:
@@ -80,18 +86,15 @@ jobs:
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
-          openff-units/
+          openff-units/ \
+          smirnoff-plugins/
 
     - name: Run 'everything all at once' tests
       run: |
         python -m pytest $PYTEST_ARGS \
+          smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
-          --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
+          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py
 
     - name: Run QC-adjacent tests
       run: |
