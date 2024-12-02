@@ -63,6 +63,12 @@ jobs:
         repository: openforcefield/openff-units
         path: openff-units
 
+    - name: Checkout OpenFF Utilities
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-utilities
+        path: openff-utilities
+
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v2
       with:
@@ -80,11 +86,15 @@ jobs:
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
-          openff-units/
+          openff-units/ \
+          openff-utilities/
+        pip list
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS \
+        pip list
+        python -m pytest $PYTEST_ARGS -m "not leaky" \
+          openff-utilities/openff/utilities/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
           --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
