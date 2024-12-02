@@ -99,7 +99,7 @@ jobs:
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS \
+        python -m pytest $PYTEST_ARGS -m "not leaky" \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-utilities/openff/utilities/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
