@@ -4,7 +4,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "50 3/6 * * *"
 
 defaults:
   run:
@@ -20,14 +20,14 @@ jobs:
         os:
           - "ubuntu-latest"
           - "macos-latest"  # this is probably macos-14
-          - "macos-12"
         python-version:
           - "3.10"
           - "3.11"
+          - "3.12"
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
-      PYTEST_ARGS: -n logical --rootdir=. --durations=20 -v
+      PYTEST_ARGS: -x -n logical --rootdir=. --durations=20
 
     steps:
     - uses: actions/checkout@v4
@@ -42,6 +42,8 @@ jobs:
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
+        fetch-depth: 0
+        fetch-tags: true
 
     - name: Checkout QCSubmit
       uses: actions/checkout@v4
@@ -56,25 +58,26 @@ jobs:
         path: openff-fragmenter
         ref: no-duplicate-runslow
 
-    - name: Checkout SMIRNOFF plugins
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/smirnoff-plugins
-        path: smirnoff-plugins
     - name: Checkout OpenFF Units
       uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-units
         path: openff-units
 
-    - name: Checkout OpenFF Models
+    - name: Checkout SMIRNOFF plugins
       uses: actions/checkout@v4
       with:
-        repository: openforcefield/openff-models
-        path: openff-models
+        repository: openforcefield/smirnoff-plugins
+        path: smirnoff-plugins
+
+    - name: Checkout OpenFF Utilities
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-utilities
+        path: openff-utilities
 
     - name: Set up conda environment
-      uses: mamba-org/setup-micromamba@v1
+      uses: mamba-org/setup-micromamba@v2
       with:
         environment-file: devtools/conda-envs/full-stack.yaml
         create-args: python=${{ matrix.python-version }}
@@ -86,35 +89,26 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        micromamba remove --force \
-          openff-interchange \
-          -y
-
         python -m pip install -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
           openff-units/ \
-          openff-models/ \
           openff-fragmenter/ \
+          openff-utilities/ \
           smirnoff-plugins/
+        pip list
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS \
+        python -m pytest $PYTEST_ARGS -m "not leaky" \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
           openff-toolkit/openff/toolkit/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
-          openff-models/openff/models/_tests/ \
-          openff-units/openff/units/_tests/ \
           openff-fragmenter/openff/fragmenter/_tests/ \
-          --ignore=smirnoff-plugins/smirnoff_plugins/_tests/handlers/test_nonbonded.py \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_force_field_custom_handler \
-          --ignore=openff-interchange/openff/interchange/_tests/test_forcefield.py::TestForceFieldPluginLoading \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/smirnoff/test_create.py::TestCreateWithPlugins \
-          --ignore=openff-interchange/openff/interchange/_tests/test_parameter_plugins.py::test_load_handler_plugins
+          openff-units/openff/units/_tests/ \
+          openff-utilities/openff/utilities/_tests/ \
+          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py
 
     - name: Run QC-adjacent tests
       run: |
