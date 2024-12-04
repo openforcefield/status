@@ -56,6 +56,7 @@ jobs:
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
+        ref: no-duplicate-runslow
 
     - name: Checkout OpenFF Units
       uses: actions/checkout@v4
@@ -93,6 +94,7 @@ jobs:
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
           openff-units/ \
+          openff-fragmenter/ \
           openff-utilities/ \
           smirnoff-plugins/
         pip list
@@ -101,8 +103,11 @@ jobs:
       run: |
         python -m pytest $PYTEST_ARGS -m "not leaky" \
           smirnoff-plugins/smirnoff_plugins/_tests/ \
-          openff-utilities/openff/utilities/_tests/ \
+          openff-toolkit/openff/toolkit/_tests/ \
           openff-interchange/openff/interchange/_tests/ \
+          openff-fragmenter/openff/fragmenter/_tests/ \
+          openff-units/openff/units/_tests/ \
+          openff-utilities/openff/utilities/_tests/ \
           --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py
 
     - name: Run QC-adjacent tests
