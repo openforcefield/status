@@ -89,7 +89,7 @@ jobs:
           openff-units/ \
           openff-units/downstream_dummy/ \
           openff-fragmenter/ \
-          openff-utilities/ \
+          openff-utilities/
         pip list
 
     - name: Run 'everything all at once' tests
