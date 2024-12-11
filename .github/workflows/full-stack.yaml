@@ -100,14 +100,7 @@ jobs:
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS \
-          smirnoff-plugins/smirnoff_plugins/_tests/ \
-          openff-toolkit/openff/toolkit/_tests/ \
-          openff-interchange/openff/interchange/_tests/ \
-          openff-fragmenter/openff/fragmenter/_tests/ \
-          openff-units/openff/units/_tests/ \
-          openff-utilities/openff/utilities/_tests/ \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py
+        python -m pytest $PYTEST_ARGS .
 
     - name: Run QC-adjacent tests
       run: |
