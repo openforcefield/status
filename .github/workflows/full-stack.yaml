@@ -63,12 +63,6 @@ jobs:
         repository: openforcefield/openff-units
         path: openff-units
 
-    - name: Checkout SMIRNOFF plugins
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/smirnoff-plugins
-        path: smirnoff-plugins
-
     - name: Checkout OpenFF Utilities
       uses: actions/checkout@v4
       with:
@@ -96,7 +90,6 @@ jobs:
           openff-units/downstream_dummy/ \
           openff-fragmenter/ \
           openff-utilities/ \
-          smirnoff-plugins/
         pip list
 
     - name: Run 'everything all at once' tests
