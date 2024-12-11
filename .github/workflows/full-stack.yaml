@@ -26,7 +26,7 @@ jobs:
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
-      PYTEST_ARGS: -n logical --rootdir=. --durations=20
+      PYTEST_ARGS: -v -n logical --rootdir=. --durations=20
 
     steps:
     - uses: actions/checkout@v4
@@ -100,7 +100,7 @@ jobs:
 
     - name: Run QC-adjacent tests
       run: |
-        python -m pytest $PYTEST_ARGS \
+        pytest $PYTEST_ARGS \
           openff-bespokefit/ \
           openff-qcsubmit/ \
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
