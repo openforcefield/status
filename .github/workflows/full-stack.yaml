@@ -94,14 +94,14 @@ jobs:
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS .
+        python -m pytest $PYTEST_ARGS . \
+          --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py
 
     - name: Run QC-adjacent tests
       run: |
         python -m pytest $PYTEST_ARGS \
           openff-qcsubmit/openff/qcsubmit/_tests/ \
-          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py \
-          --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py
+          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
     - name: Run NAGL tests via pyargs
       if: matrix.os == 'FOOBAR'
