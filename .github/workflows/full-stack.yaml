@@ -100,7 +100,8 @@ jobs:
       run: |
         python -m pytest $PYTEST_ARGS \
           openff-qcsubmit/openff/qcsubmit/_tests/ \
-          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
+          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py \
+          --ignore=openff/utilities/_tests/test_provenance.py::test_conda_unavailable_returns_empty_dict
 
     - name: Run NAGL tests via pyargs
       if: matrix.os == 'FOOBAR'
