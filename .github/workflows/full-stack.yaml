@@ -93,6 +93,7 @@ jobs:
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
           openff-units/ \
+          openff-units/downstream_dummy/ \
           openff-fragmenter/ \
           openff-utilities/ \
           smirnoff-plugins/
