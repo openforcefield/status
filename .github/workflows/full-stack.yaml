@@ -26,7 +26,7 @@ jobs:
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
-      PYTEST_ARGS: -x -n logical --durations=20
+      PYTEST_ARGS: -n logical --durations=20
 
     steps:
     - uses: actions/checkout@v4
@@ -94,13 +94,21 @@ jobs:
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS . \
+        python -m pytest $PYTEST_ARGS \
+          openff-toolkit/ \
+          openff-interchange/ \
+          openff-units/ \
+          openff-utilities/ \
+          openff-fragmenter/ \
+          openff-nagl/ \
+          openff-evaluator/ \
           --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py
 
     - name: Run QC-adjacent tests
       run: |
         python -m pytest $PYTEST_ARGS \
-          openff-qcsubmit/openff/qcsubmit/_tests/ \
+          openff-bespokefit/ \
+          openff-qcsubmit/ \
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
     - name: Run NAGL tests via pyargs
