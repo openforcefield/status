@@ -94,15 +94,9 @@ jobs:
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS \
-          openff-toolkit/ \
-          openff-interchange/ \
-          openff-units/ \
-          openff-utilities/ \
-          openff-fragmenter/ \
-          openff-nagl/ \
-          openff-evaluator/ \
-          --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py
+        python -m pytest $PYTEST_ARGS . \
+          --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
+          --ignore=openff-qcsubmit
 
     - name: Run QC-adjacent tests
       run: |
