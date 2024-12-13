@@ -33,9 +33,6 @@ dependencies:
   - qcarchivetesting
   - h5py
 
-  # https://github.com/MolSSI/QCFractal/issues/864
-  - parsl <2024.12.09
-
   - openff-nagl
 
   - gromacs >=2024
