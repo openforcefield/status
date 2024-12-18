@@ -8,7 +8,6 @@ dependencies:
   - openff-toolkit
   - openff-fragmenter
   - openff-interchange
-  - smirnoff-plugins
   - pymbar
   - pytest
   - pytest-randomly
