@@ -24,16 +24,13 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal ~=0.56
+  - qcportal ~=0.57
   - qcengine
   - geometric
 
   - openff-qcsubmit
   - qcarchivetesting
   - h5py
-
-  # https://github.com/MolSSI/QCFractal/issues/864
-  - parsl <2024.12.09
 
   - openff-nagl
 

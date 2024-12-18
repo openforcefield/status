@@ -49,6 +49,7 @@ jobs:
       with:
         repository: openforcefield/openff-qcsubmit
         path: openff-qcsubmit
+        fetch-depth: 0
 
     - name: Checkout OpenFF Fragmenter
       uses: actions/checkout@v4
