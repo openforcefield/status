@@ -15,11 +15,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-      fail-fast: false
       matrix:
         os:
           - "ubuntu-latest"
-          - "macos-latest"  # this is probably macos-14
+          - "macos-latest"
         python-version:
           - "3.10"
           - "3.11"
@@ -27,7 +26,7 @@ jobs:
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
-      PYTEST_ARGS: -x -n logical --rootdir=. --durations=20
+      PYTEST_ARGS: -v -n logical --rootdir=. --durations=20
 
     steps:
     - uses: actions/checkout@v4
@@ -57,18 +56,13 @@ jobs:
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
+        ref: no-duplicate-runslow
 
     - name: Checkout OpenFF Units
       uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-units
         path: openff-units
-
-    - name: Checkout SMIRNOFF plugins
-      uses: actions/checkout@v4
-      with:
-        repository: openforcefield/smirnoff-plugins
-        path: smirnoff-plugins
 
     - name: Checkout OpenFF Utilities
       uses: actions/checkout@v4
@@ -94,22 +88,23 @@ jobs:
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
           openff-units/ \
-          openff-utilities/ \
-          smirnoff-plugins/
+          openff-units/downstream_dummy/ \
+          openff-fragmenter/ \
+          openff-utilities/
         pip list
 
     - name: Run 'everything all at once' tests
       run: |
-        python -m pytest $PYTEST_ARGS -m "not leaky" \
-          smirnoff-plugins/smirnoff_plugins/_tests/ \
-          openff-utilities/openff/utilities/_tests/ \
-          openff-interchange/openff/interchange/_tests/ \
-          --ignore=openff-interchange/openff/interchange/_tests/unit_tests/components/test_packmol.py
+        python -m pytest $PYTEST_ARGS . \
+          --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
+          --ignore=openff-qcsubmit
 
     - name: Run QC-adjacent tests
       run: |
-        python -m pytest $PYTEST_ARGS \
-          openff-qcsubmit/openff/qcsubmit/_tests/ \
+        # rm openff-interchange/ openff-toolkit/ openff-units/ openff-utilities/
+        # micromamba install openff-qcsubmit -c conda-forge -y
+        pytest $PYTEST_ARGS . \
+          openff-qcsubmit/ \
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
     - name: Run NAGL tests via pyargs
