@@ -48,7 +48,7 @@ Full-stack status:
 
 * [**`CMILES`**](https://github.com/openforcefield/cmiles): [As of May 2021](https://github.com/openforcefield/cmiles/tree/9befbd02c93525f90c2f4af12e951d90cb9618b1#cmiles-is-no-longer-actively-maintained) all functionality in CMILES is available elsewhere and it is no longer actively maintained.
 * [**`OpenFF CLI`**](https://github.com/openforcefield/openff-cli): This project stalled in an experimental phase. A CLI produced by OpenFF may be avaible in the future.
-* [**`openff-models`**](https://github.com/openforcefield/openff-models): With the release of Interchange 0.4, this project is no longer used internally.
+* [**`openff-models`**](https://github.com/openforcefield/openff-models): With the release of Interchange 0.4, this project is no longer used internally. It was archived on January 7, 2025. See the README of that repo for suggestions on migration.
 
 **Note:** *This repository was previously planned to be used as a 'metapackage' to facilitate importing all packages built by the consortium under a single umbrella. This is no longer the case as the built-in python namespaces will be used instead. The commit history for this repository as a 'metapackage' is stored at commit [3ada687](3ada68743104d49f7ee03c933fde6af3ce78d972)*.
 
