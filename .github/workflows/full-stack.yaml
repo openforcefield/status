@@ -56,6 +56,7 @@ jobs:
         repository: openforcefield/openff-units
         path: openff-units
         fetch-depth: 0
+        ref: 383d0c7c8ddaadb38f75de2d70aefb5b5ba89f9c
 
     - name: Checkout OpenFF Utilities
       uses: actions/checkout@v4
