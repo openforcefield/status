@@ -6,6 +6,7 @@ dependencies:
   - python
   - pip
   - openff-toolkit
+  - openff-fragmenter
   - openff-interchange
   - pymbar
   - pytest

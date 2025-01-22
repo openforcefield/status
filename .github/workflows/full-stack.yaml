@@ -50,6 +50,13 @@ jobs:
         path: openff-qcsubmit
         fetch-depth: 0
 
+    - name: Checkout OpenFF Fragmenter
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-fragmenter
+        path: openff-fragmenter
+        ref: no-duplicate-runslow
+
     - name: Checkout OpenFF Units
       uses: actions/checkout@v4
       with:
@@ -84,6 +91,7 @@ jobs:
           openff-qcsubmit/ \
           openff-units/ \
           openff-units/downstream_dummy/ \
+          openff-fragmenter/ \
           openff-utilities/
         pip list
 
