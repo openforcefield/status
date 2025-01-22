@@ -63,12 +63,14 @@ jobs:
       with:
         repository: openforcefield/openff-units
         path: openff-units
+        fetch-depth: 0
 
     - name: Checkout OpenFF Utilities
       uses: actions/checkout@v4
       with:
         repository: openforcefield/openff-utilities
         path: openff-utilities
+        fetch-depth: 0
 
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v2
