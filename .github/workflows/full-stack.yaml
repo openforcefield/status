@@ -113,4 +113,4 @@ jobs:
     - name: Run NAGL tests via pyargs
       if: matrix.os == 'FOOBAR'
       run: |
-        python -m pytest -nauto --pyargs "openff.nagl"
+        python -m pytest -nauto openff-qcsubmit/  # openff-nagl/
