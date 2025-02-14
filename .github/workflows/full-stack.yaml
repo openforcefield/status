@@ -106,7 +106,7 @@ jobs:
       run: |
         # rm openff-interchange/ openff-toolkit/ openff-units/ openff-utilities/
         # micromamba install openff-qcsubmit -c conda-forge -y
-        pytest $PYTEST_ARGS . \
+        pytest $PYTEST_ARGS \
           openff-qcsubmit/ \
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
