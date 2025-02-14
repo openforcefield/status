@@ -1,0 +1,116 @@
+name: "Full-stack tests"
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "50 3/6 * * *"
+
+defaults:
+  run:
+    shell: bash -leo pipefail {0} {0}
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - "ubuntu-latest"
+          - "macos-latest"
+        python-version:
+          - "3.10"
+          - "3.11"
+          - "3.12"
+
+    env:
+      OE_LICENSE: ${{ github.workspace }}/oe_license.txt
+      PYTEST_ARGS: -vx -n logical --rootdir=. --durations=20
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Each of these checkouts can be done on a feature branch
+    # https://github.com/actions/checkout#checkout-a-different-branch
+
+    # Only check out the repos whose tests directly run; development
+    # installs of other packages are brought in via pip via micromamba
+    - name: Checkout Interchange
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-interchange
+        path: openff-interchange
+        fetch-depth: 0
+        fetch-tags: true
+
+    - name: Checkout QCSubmit
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-qcsubmit
+        path: openff-qcsubmit
+        fetch-depth: 0
+
+    - name: Checkout OpenFF Fragmenter
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-fragmenter
+        path: openff-fragmenter
+        ref: no-duplicate-runslow
+
+    - name: Checkout OpenFF Units
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-units
+        path: openff-units
+        fetch-depth: 0
+        ref: 0.2.2
+
+    - name: Checkout OpenFF Utilities
+      uses: actions/checkout@v4
+      with:
+        repository: openforcefield/openff-utilities
+        path: openff-utilities
+        fetch-depth: 0
+
+    - name: Set up conda environment
+      uses: mamba-org/setup-micromamba@v2
+      with:
+        environment-file: devtools/conda-envs/full-stack.yaml
+        create-args: python=${{ matrix.python-version }}
+
+    - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
+      env:
+        OE_LICENSE_TEXT: ${{ secrets.OE_LICENSE }}
+      run: echo "${OE_LICENSE_TEXT}" > ${OE_LICENSE}
+
+    - name: Install most recent development versions
+      run: |
+        python -m pip install -e \
+          openff-interchange/ \
+          openff-interchange/plugins/ \
+          openff-qcsubmit/ \
+          openff-units/ \
+          openff-units/downstream_dummy/ \
+          openff-fragmenter/ \
+          openff-utilities/
+        pip list
+
+    - name: Run 'everything all at once' tests
+      run: |
+        python -m pytest $PYTEST_ARGS . \
+          --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
+          --ignore=openff-qcsubmit
+
+    - name: Run QC-adjacent tests
+      run: |
+        # rm openff-interchange/ openff-toolkit/ openff-units/ openff-utilities/
+        # micromamba install openff-qcsubmit -c conda-forge -y
+        pytest $PYTEST_ARGS . \
+          openff-qcsubmit/ \
+          --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
+
+    - name: Run NAGL tests via pyargs
+      if: matrix.os == 'FOOBAR'
+      run: |
+        python -m pytest -nauto --pyargs "openff.nagl"
