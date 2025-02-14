@@ -31,6 +31,7 @@ dependencies:
   - openff-qcsubmit
   - qcarchivetesting
   - h5py
+  - psi4 =1.9
 
   - openff-nagl
 
@@ -39,5 +40,3 @@ dependencies:
   - lammps >=2023.08.02
   - openmpi =4
 
-  # shims
-  - pint <0.24
