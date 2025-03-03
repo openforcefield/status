@@ -32,6 +32,7 @@ dependencies:
   - openff-qcsubmit
   - qcarchivetesting
   - h5py
+  - psi4 =1.9
 
   - openff-nagl
 
