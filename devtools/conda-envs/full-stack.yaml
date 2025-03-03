@@ -5,6 +5,7 @@ channels:
 dependencies:
   - python
   - pip
+  - pint =0.24
   - openff-toolkit
   - openff-fragmenter
   - openff-interchange
@@ -39,4 +40,3 @@ dependencies:
   # https://github.com/conda-forge/lammps-feedstock/issues/207
   - lammps >=2023.08.02
   - openmpi =4
-
