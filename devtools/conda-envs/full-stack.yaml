@@ -5,6 +5,7 @@ channels:
 dependencies:
   - python
   - pip
+  - pint =0.24
   - openff-toolkit
   - openff-fragmenter
   - openff-interchange
