@@ -25,12 +25,13 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal <0.58
+  - qcportal >=0.59
   - qcengine
   - geometric
 
   - openff-qcsubmit
   - qcarchivetesting
+  - qcfractalcompute
   - h5py
   - psi4 =1.9
 
