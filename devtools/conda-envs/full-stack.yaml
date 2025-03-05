@@ -25,7 +25,7 @@ dependencies:
 
     # Recharge
   - qcelemental
-  - qcportal
+  - qcportal >=0.59
   - qcengine
   - geometric
 
