@@ -31,6 +31,7 @@ dependencies:
 
   - openff-qcsubmit
   - qcarchivetesting
+  - qcfractalcompute
   - h5py
   - psi4 =1.9
 
