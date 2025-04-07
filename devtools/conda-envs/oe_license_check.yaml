@@ -3,5 +3,5 @@ channels:
   - openeye
   - conda-forge
 dependencies:
-  - python =3.10
+  - python
   - openeye-toolkits
