@@ -1,11 +1,13 @@
 name: full-stack-tests
 channels:
+  - conda-forge/label/openmm_dev
   - openeye
   - conda-forge
 dependencies:
   - python
   - pip
   - pint =0.24
+  - openmm ==8.3.0beta
   - openff-toolkit
   - openff-fragmenter
   - openff-interchange
