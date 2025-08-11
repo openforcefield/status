@@ -28,7 +28,7 @@ jobs:
       PYTEST_ARGS: -vx -n logical --rootdir=. --durations=20
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     # Each of these checkouts can be done on a feature branch
     # https://github.com/actions/checkout#checkout-a-different-branch
@@ -36,7 +36,7 @@ jobs:
     # Only check out the repos whose tests directly run; development
     # installs of other packages are brought in via pip via micromamba
     - name: Checkout Interchange
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
@@ -44,27 +44,27 @@ jobs:
         fetch-tags: true
 
     - name: Checkout QCSubmit
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: openforcefield/openff-qcsubmit
         path: openff-qcsubmit
         fetch-depth: 0
 
     - name: Checkout OpenFF Fragmenter
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
     - name: Checkout OpenFF Units
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: openforcefield/openff-units
         path: openff-units
         fetch-depth: 0
 
     - name: Checkout OpenFF Utilities
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: openforcefield/openff-utilities
         path: openff-utilities
