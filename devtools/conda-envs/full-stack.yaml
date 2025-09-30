@@ -1,6 +1,7 @@
 name: full-stack-tests
 channels:
   - openeye
+  - conda-forge/label/openmm_rc
   - conda-forge
 dependencies:
   - python
@@ -42,3 +43,5 @@ dependencies:
   # https://github.com/conda-forge/lammps-feedstock/issues/207
   - lammps >=2023.08.02
   - openmpi =4
+
+  - openmm =8.4.0beta
