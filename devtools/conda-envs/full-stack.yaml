@@ -6,6 +6,7 @@ dependencies:
   - python
   - pip
   - numpy <2.3
+  - pydantic !=2.12
   - pint =0.24
   - openff-toolkit
   - openff-fragmenter
