@@ -55,6 +55,7 @@ jobs:
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
+        fetch-depth: 0
 
     - name: Checkout OpenFF Units
       uses: actions/checkout@v6
