@@ -43,3 +43,5 @@ dependencies:
   # https://github.com/conda-forge/lammps-feedstock/issues/207
   - lammps >=2023.08.02
   - openmpi =4
+  - pip:
+    - git+https://github.com/openforcefield/openff-interchange@0.4.10-release
