@@ -1,16 +1,17 @@
 name: full-stack-tests
 channels:
   - openeye
+  - conda-forge/label/openff-interchange_dev
   - conda-forge
 dependencies:
   - python
   - pip
-  - numpy
+  - numpy =2.4
   - pydantic !=2.12
   - pint
   - openff-toolkit
   - openff-fragmenter
-  - openff-interchange
+  - openff-interchange =0.4.11
   - pymbar
   - pytest
   - pytest-randomly
