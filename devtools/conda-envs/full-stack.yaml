@@ -5,9 +5,9 @@ channels:
 dependencies:
   - python
   - pip
-  - numpy <2.3
+  - numpy
   - pydantic !=2.12
-  - pint =0.24
+  - pint
   - openff-toolkit
   - openff-fragmenter
   - openff-interchange
@@ -44,4 +44,4 @@ dependencies:
   - lammps >=2023.08.02
   - openmpi =4
   - pip:
-    - git+https://github.com/openforcefield/openff-interchange@0.4.10-release
+    - git+https://github.com/openforcefield/openff-interchange@0.4.11-release
