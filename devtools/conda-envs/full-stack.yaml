@@ -1,12 +1,14 @@
 name: full-stack-tests
 channels:
   - openeye
+  - conda-forge/label/qcelemental_dev
+  - conda-forge/label/qcengine_dev
   - conda-forge
 dependencies:
-  - python
+  - python=3.14
   - pip
   - numpy <2.3
-  - pydantic !=2.12
+  - pydantic
   - pint
   - openff-toolkit
   - openff-fragmenter
@@ -26,9 +28,9 @@ dependencies:
   - intermol
 
     # Recharge
-  - qcelemental
+  - qcelemental==0.50.0rc1
   - qcportal >=0.59
-  - qcengine
+  - qcengine==0.50.0rc1
   - geometric
 
   - openff-qcsubmit
