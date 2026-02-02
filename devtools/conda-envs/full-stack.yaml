@@ -5,10 +5,10 @@ channels:
   - conda-forge/label/qcengine_dev
   - conda-forge
 dependencies:
-  - python=3.14
+  - python=3.13
   - pip
   - numpy <2.3
-  - pydantic
+  - pydantic>=2
   - pint
   - openff-toolkit
   - openff-fragmenter
