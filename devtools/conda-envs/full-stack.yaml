@@ -8,7 +8,7 @@ dependencies:
   - python=3.13
   - pip
   - numpy <2.3
-  - pydantic>=2
+  - pydantic<=2
   - pint
   - openff-toolkit
   - openff-fragmenter
@@ -37,7 +37,7 @@ dependencies:
   - qcarchivetesting
   - qcfractalcompute
   - h5py
-  - psi4 =1.9
+  - psi4
 
   - openff-nagl
 
