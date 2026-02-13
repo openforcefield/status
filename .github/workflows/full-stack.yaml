@@ -40,8 +40,6 @@ jobs:
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
-        fetch-depth: 0
-        fetch-tags: true
 
     - name: Checkout QCSubmit
       uses: actions/checkout@v6
@@ -62,7 +60,6 @@ jobs:
       with:
         repository: openforcefield/openff-units
         path: openff-units
-        fetch-depth: 0
 
     - name: Checkout OpenFF Utilities
       uses: actions/checkout@v6
@@ -93,12 +90,6 @@ jobs:
           openff-fragmenter/ \
           openff-utilities/
         pip list
-
-      # See https://github.com/openforcefield/openff-units/issues/111
-      # for more or better solution - possibly not needed when links are checked
-      # before a parallel pytest run
-    - name: Shim for `pytest-xdist` + Pint cross-interaction
-      run: python -c "from openff.toolkit import *"
 
     - name: Run 'everything all at once' tests
       run: |

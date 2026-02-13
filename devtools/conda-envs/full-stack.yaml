@@ -4,13 +4,14 @@ channels:
   - conda-forge
 dependencies:
   - python
+  - setuptools =81
   - pip
-  - numpy <2.3
-  - pydantic !=2.12
-  - pint
-  - openff-toolkit
+  - numpy >=2.4
+  - pydantic >=2,<3,!=2.12
+  - pint >=0.25
+  - openff-toolkit >=0.18
   - openff-fragmenter
-  - openff-interchange
+  - openff-interchange >=0.5
   - pymbar
   - pytest
   - pytest-randomly
@@ -21,7 +22,7 @@ dependencies:
   - toml
   - bson
   - msgpack-python
-  - openeye-toolkits
+  - openeye-toolkits >=2025
   - rdkit !=2024.03.6,!=2024.09.1
   - intermol
 
