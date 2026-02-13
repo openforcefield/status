@@ -4,6 +4,7 @@ channels:
   - conda-forge
 dependencies:
   - python
+  - setuptools =81
   - pip
   - numpy >=2.4
   - pydantic >=2,<3,!=2.12
