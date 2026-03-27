@@ -69,7 +69,7 @@ jobs:
         fetch-depth: 0
 
     - name: Set up conda environment
-      uses: mamba-org/setup-micromamba@v2
+      uses: mamba-org/setup-micromamba@v3
       with:
         environment-file: devtools/conda-envs/full-stack.yaml
         create-args: python=${{ matrix.python-version }}
