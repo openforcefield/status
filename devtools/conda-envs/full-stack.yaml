@@ -12,6 +12,7 @@ dependencies:
   - openff-toolkit >=0.18
   - openff-fragmenter
   - openff-interchange >=0.5
+  - openff-packmol >=0.1
   - pymbar
   - pytest
   - pytest-randomly
