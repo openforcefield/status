@@ -12,6 +12,7 @@ dependencies:
   - openff-fragmenter-base
   - openff-interchange-base >=0.5
   - openff-packmol =0.1=pyhc364b38_1
+  - openmm
   - pymbar =4
   - pytest
   - pytest-randomly
