@@ -1,19 +1,18 @@
 name: full-stack-tests
 channels:
-  - openeye
   - conda-forge
 dependencies:
   - python
-  - setuptools =81
+  - setuptools
   - pip
   - numpy >=2.4
-  - pydantic >=2,<3,!=2.12
+  - pydantic =2.11
   - pint >=0.25
   - openff-toolkit >=0.18
   - openff-fragmenter
   - openff-interchange >=0.5
-  - openff-packmol >=0.1
-  - pymbar
+  - openff-packmol =0.1=pyhc364b38_1
+  - pymbar =4
   - pytest
   - pytest-randomly
   - pytest-xdist
@@ -23,25 +22,25 @@ dependencies:
   - toml
   - bson
   - msgpack-python
-  - openeye-toolkits >=2025
-  - rdkit !=2024.03.6,!=2024.09.1
+  - openeye::openeye-toolkits >=2025
+  - rdkit >=2025.09.5
   - intermol
 
     # Recharge
   - qcelemental
-  - qcportal >=0.59
+  - qcportal
   - qcengine
   - geometric
 
-  - openff-qcsubmit
+  - openff-qcsubmit >=0.57
   - qcarchivetesting
   - qcfractalcompute
   - h5py
-  - psi4 =1.9
+  - psi4
 
   - openff-nagl
 
-  - gromacs >=2024
-  # https://github.com/conda-forge/lammps-feedstock/issues/207
-  - lammps >=2023.08.02
-  - openmpi =4
+# - gromacs >=2026
+# # https://github.com/conda-forge/lammps-feedstock/issues/207
+# # lammps # >=2023.08.02
+# - openmpi =5
