@@ -8,9 +8,9 @@ dependencies:
   - numpy >=2.4
   - pydantic =2.11
   - pint >=0.25
-  - openff-toolkit >=0.18
-  - openff-fragmenter
-  - openff-interchange >=0.5
+  - openff-toolkit-base >=0.18
+  - openff-fragmenter-base
+  - openff-interchange-base >=0.5
   - openff-packmol =0.1=pyhc364b38_1
   - pymbar =4
   - pytest
@@ -23,7 +23,7 @@ dependencies:
   - bson
   - msgpack-python
   - openeye::openeye-toolkits >=2025
-  - rdkit >=2025.09.5
+  - rdkit
   - intermol
 
     # Recharge
@@ -40,7 +40,5 @@ dependencies:
 
   - openff-nagl
 
-# - gromacs >=2026
-# # https://github.com/conda-forge/lammps-feedstock/issues/207
-# # lammps # >=2023.08.02
-# - openmpi =5
+  - gromacs
+  - lammps
