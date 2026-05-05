@@ -24,16 +24,16 @@ dependencies:
   - bson
   - msgpack-python
   - openeye::openeye-toolkits >=2025
-  - rdkit
+  - rdkit >=2026.03.2
   - intermol
 
     # Recharge
   - qcelemental
-  - qcportal
   - qcengine
   - geometric
 
   - openff-qcsubmit >=0.57
+  - qcportal >=0.63
   - qcarchivetesting
   - qcfractalcompute
   - h5py
@@ -41,5 +41,5 @@ dependencies:
 
   - openff-nagl
 
-  - gromacs
-  - lammps
+  # gromacs
+  # lammps
