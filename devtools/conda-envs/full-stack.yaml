@@ -7,12 +7,12 @@ dependencies:
   - setuptools =81
   - pip
   - numpy >=2.4
-  - pydantic >=2,<3,!=2.12
+  - pydantic =2.11.10
   - pint >=0.25
   - openff-toolkit >=0.18
+  - ambertools =24.8  # just to help solver
   - openff-fragmenter
-  - openff-interchange >=0.5
-  - openff-packmol >=0.1
+  - openff-interchange >=0.5.2
   - pymbar
   - pytest
   - pytest-randomly
@@ -24,7 +24,7 @@ dependencies:
   - bson
   - msgpack-python
   - openeye-toolkits >=2025
-  - rdkit !=2024.03.6,!=2024.09.1
+  - rdkit >=2025.09.5
   - intermol
 
     # Recharge
@@ -36,12 +36,16 @@ dependencies:
   - openff-qcsubmit
   - qcarchivetesting
   - qcfractalcompute
-  - h5py
-  - psi4 =1.9
+  - h5py =3.16
+  - psi4 =1.9.1
 
-  - openff-nagl
+  - openff-nagl >=0.5
+  - pytorch =2.8
+  - pytorch-lightning =2.6.1
 
   - gromacs >=2024
   # https://github.com/conda-forge/lammps-feedstock/issues/207
-  - lammps >=2023.08.02
+  - lammps >=2024.08.29
   - openmpi =4
+
+  - icu=75 # just to help solver
