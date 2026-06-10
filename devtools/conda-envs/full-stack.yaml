@@ -13,6 +13,7 @@ dependencies:
   - ambertools =24.8  # just to help solver
   - openff-fragmenter
   - openff-interchange >=0.5.2
+  - mdtraj
   - pymbar
   - pytest
   - pytest-randomly
