@@ -50,7 +50,7 @@ dependencies:
   - openmpi =4
 
   - icu=75 # just to help solver
- 
+
   - pip:
     - git+https://github.com/openforcefield/openff-units.git@define-pydantic-schema
     - git+https://github.com/openforcefield/openff-interchange.git@fix-pydantic
