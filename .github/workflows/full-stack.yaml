@@ -59,7 +59,7 @@ jobs:
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-units
-        ref: "fix-pydantic-schema"
+        ref: "define-pydantic-schema"
         path: openff-units
 
     - name: Checkout OpenFF Utilities
