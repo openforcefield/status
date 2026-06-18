@@ -107,7 +107,7 @@ jobs:
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
 
     - name: Run openfe eco tests
-      run: | 
+      run: |
         pytest -v --pyargs openfe
         pytest -v --pyargs openfecli
         pytest -v --pyargs gufe
