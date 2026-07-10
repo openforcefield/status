@@ -1,5 +1,6 @@
 name: full-stack-tests
 channels:
+  - mmh/label/amber25
   - openeye
   - conda-forge
 dependencies:
@@ -10,7 +11,7 @@ dependencies:
   - pydantic =2.11.10
   - pint >=0.25
   - openff-toolkit >=0.18
-  - ambertools =24.8  # just to help solver
+  - ambertools =25.3  # just to help solver
   - openff-fragmenter
   - openff-interchange >=0.5.2
   - mdtraj
