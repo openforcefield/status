@@ -7,7 +7,7 @@ dependencies:
   - python
   - setuptools =81
   - pip
-  - numpy >=2.4
+  - numpy >=2
   - pydantic =2.11.10
   - pint >=0.25
   - openff-toolkit >=0.18
@@ -48,6 +48,3 @@ dependencies:
   - gromacs >=2024
   # https://github.com/conda-forge/lammps-feedstock/issues/207
   - lammps >=2024.08.29
-  - openmpi =4
-
-  - icu=75 # just to help solver
