@@ -1,6 +1,6 @@
 name: full-stack-tests
 channels:
-  - mmh/label/amber25
+  - mmh/label/amber26
   - openeye
   - conda-forge
 dependencies:
