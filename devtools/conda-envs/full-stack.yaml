@@ -5,15 +5,15 @@ dependencies:
   - python
   - setuptools
   - pip
-  - numpy >=2.4
-  - pydantic =2.11
-  - pint >=0.25
-  - openff-toolkit-base >=0.18
-  - openff-fragmenter-base
-  - openff-interchange-base >=0.5
-  - openff-packmol =0.1=pyhc364b38_1
+  - numpy
+  - pydantic
+  - pint
+  - openff-toolkit-base
+  - openff-interchange-base
+  - openff-fragmenter
+  - openff-packmol
   - openmm
-  - pymbar =4
+  - pymbar
   - pytest
   - pytest-randomly
   - pytest-xdist
@@ -23,8 +23,8 @@ dependencies:
   - toml
   - bson
   - msgpack-python
-  - openeye::openeye-toolkits >=2025
-  - rdkit >=2026.03.2
+  - openeye::openeye-toolkits
+  - rdkit
   - intermol
 
     # Recharge
@@ -32,8 +32,8 @@ dependencies:
   - qcengine
   - geometric
 
-  - openff-qcsubmit >=0.57
-  - qcportal >=0.63
+  - openff-qcsubmit
+  - qcportal
   - qcarchivetesting
   - qcfractalcompute
   - h5py
@@ -41,5 +41,5 @@ dependencies:
 
   - openff-nagl
 
-  # gromacs
+  - gromacs
   # lammps

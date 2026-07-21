@@ -45,14 +45,12 @@ jobs:
       with:
         repository: openforcefield/openff-qcsubmit
         path: openff-qcsubmit
-        fetch-depth: 0
 
     - name: Checkout OpenFF Fragmenter
       uses: actions/checkout@v6
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
-        fetch-depth: 0
 
     - name: Checkout OpenFF Units
       uses: actions/checkout@v6
@@ -65,7 +63,6 @@ jobs:
       with:
         repository: openforcefield/openff-utilities
         path: openff-utilities
-        fetch-depth: 0
 
     - name: Set up conda environment
       uses: mamba-org/setup-micromamba@v3
