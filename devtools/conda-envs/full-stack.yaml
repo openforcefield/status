@@ -9,10 +9,10 @@ dependencies:
   - pydantic
   - pint
   - openff-toolkit-base
-  - openff-interchange-base
   - openff-fragmenter
   - openff-packmol
   - openmm
+  - mdtraj
   - pymbar
   - pytest
   - pytest-randomly
@@ -39,7 +39,9 @@ dependencies:
   - h5py
   - psi4
 
-  - openff-nagl
+  - openff-nagl >=0.5
+  - pytorch =2.8
+  - pytorch-lightning =2.6.1
 
   - gromacs
   # lammps
