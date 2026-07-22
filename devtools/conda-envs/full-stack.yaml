@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python
+  - uv
   - setuptools
   - pip
   - numpy
