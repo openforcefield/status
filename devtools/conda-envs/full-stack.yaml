@@ -4,15 +4,14 @@ channels:
   - conda-forge
 dependencies:
   - python
-  - setuptools =81
+  - setuptools
   - uv
-  - numpy >=2.4
-  - pydantic =2.11.10
-  - pint >=0.25
-  - openff-toolkit >=0.18
-  - ambertools =24.8  # just to help solver
+  - numpy
+  - pydantic
+  - pint
+  - openff-toolkit
   - openff-fragmenter
-  - openff-interchange >=0.5.2
+  - openff-units >=0.4
   - mdtraj
   - pymbar
   - pytest
