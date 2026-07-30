@@ -9,7 +9,7 @@ dependencies:
   - numpy
   - pydantic
   - pint
-  - openff-toolkit
+  - openff-toolkit >=0.18
   - openff-fragmenter
   - openff-units >=0.4
   - mdtraj
@@ -33,7 +33,7 @@ dependencies:
   - qcengine
   - geometric
 
-  - openff-qcsubmit
+  - openff-qcsubmit >=0.57
   - qcarchivetesting
   - qcfractalcompute
   - h5py =3.16
