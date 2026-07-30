@@ -38,6 +38,7 @@ jobs:
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-interchange
+        ref: "fix-pydantic"
         path: openff-interchange
 
     - name: Checkout QCSubmit
@@ -56,6 +57,7 @@ jobs:
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-units
+        ref: "define-pydantic-schema"
         path: openff-units
 
     - name: Checkout OpenFF Utilities
@@ -68,7 +70,7 @@ jobs:
       uses: mamba-org/setup-micromamba@v3
       with:
         environment-file: devtools/conda-envs/full-stack.yaml
-        create-args: python=${{ matrix.python-version }}
+        create-args: python=${{ matrix.python-version }} openfe=1.11.1
 
     - name: Make oe_license.txt file from GH org secret "OE_LICENSE"
       env:
@@ -100,6 +102,12 @@ jobs:
         pytest $PYTEST_ARGS \
           openff-qcsubmit/ \
           --ignore=openff-qcsubmit/openff/qcsubmit/_tests/test_submissions.py
+
+    - name: Run openfe eco tests
+      run: |
+        pytest -v --pyargs openfe
+        pytest -v --pyargs openfecli
+        pytest -v --pyargs gufe
 
     - name: Run NAGL tests via pyargs
       if: matrix.os == 'FOOBAR'
