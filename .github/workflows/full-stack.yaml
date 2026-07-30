@@ -77,7 +77,7 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        uv pip install -e --no-deps \
+        uv pip install --no-deps -e \
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
