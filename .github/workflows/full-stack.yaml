@@ -77,7 +77,7 @@ jobs:
 
     - name: Install most recent development versions
       run: |
-        python -m pip install -e \
+        uv pip install -e --no-deps \
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-qcsubmit/ \
@@ -85,7 +85,7 @@ jobs:
           openff-units/downstream_dummy/ \
           openff-fragmenter/ \
           openff-utilities/
-        pip list
+        uv pip list
 
     - name: Run 'everything all at once' tests
       run: |
