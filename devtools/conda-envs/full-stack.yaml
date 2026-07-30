@@ -5,7 +5,7 @@ channels:
 dependencies:
   - python
   - setuptools =81
-  - pip
+  - uv
   - numpy >=2.4
   - pydantic =2.11.10
   - pint >=0.25
