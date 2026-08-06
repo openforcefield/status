@@ -84,4 +84,3 @@ jobs:
       run: |
         python -m pytest $PYTEST_ARGS . \
           --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
-
