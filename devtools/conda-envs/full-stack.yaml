@@ -10,6 +10,7 @@ dependencies:
   - pydantic
   - pint
   - openff-toolkit >=0.18
+  - openff-nagl >=0.5
   - openff-fragmenter
   - openff-units >=0.4
   - mdtraj
@@ -26,26 +27,5 @@ dependencies:
   - openeye-toolkits >=2025
   - rdkit >=2025.09.5
   - intermol
-
-    # Recharge
-  - qcelemental
-  - qcportal >=0.59
-  - qcengine
-  - geometric
-
-  - openff-qcsubmit >=0.57
-  - qcarchivetesting
-  - qcfractalcompute
-  - h5py =3.16
-  - psi4 =1.9.1
-
-  - openff-nagl >=0.5
-  - pytorch =2.8
-  - pytorch-lightning =2.6.1
-
   - gromacs >=2024
-  # https://github.com/conda-forge/lammps-feedstock/issues/207
-  - lammps >=2024.08.29
-  - openmpi =4
-
-  - icu=75 # just to help solver
+  - lammps >=2024
