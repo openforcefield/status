@@ -12,7 +12,8 @@ defaults:
 
 jobs:
   test:
-    runs-on: OS=${{ matrix.os }}, Python=${{ matrix.python-version }}, Variant=${{ matrix.variant }}
+    name: OS=${{ matrix.os }}, Python=${{ matrix.python-version }}, Variant=${{ matrix.variant }}
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
