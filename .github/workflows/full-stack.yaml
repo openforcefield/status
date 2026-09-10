@@ -12,7 +12,7 @@ defaults:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: OS: ${{ matrix.os }}, Python: ${{ matrix.python-version }}, Variant: ${{ matrix.variant }}
 
     strategy:
       matrix:
@@ -22,6 +22,9 @@ jobs:
         python-version:
           - "3.12"
           - "3.13"
+        variant:
+          - "development"
+          - "released"
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
@@ -36,30 +39,35 @@ jobs:
     # Only check out the repos whose tests directly run; development
     # installs of other packages are brought in via pip via micromamba
     - name: Checkout OpenFF NAGL
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-nagl
         path: openff-nagl
 
     - name: Checkout Interchange
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
 
     - name: Checkout OpenFF Fragmenter
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
     - name: Checkout OpenFF Units
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-units
         path: openff-units
 
     - name: Checkout OpenFF Utilities
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-utilities
@@ -77,6 +85,7 @@ jobs:
       run: echo "${OE_LICENSE_TEXT}" > ${OE_LICENSE}
 
     - name: Install most recent development versions
+      if: matrix.variant == 'development'
       run: |
         uv pip install --no-deps -e \
           openff-nagl/ \
