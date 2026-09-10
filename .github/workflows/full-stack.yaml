@@ -97,7 +97,17 @@ jobs:
           openff-utilities/
         uv pip list
 
-    - name: Run 'everything all at once' tests
+    - name: Run 'everything all at once' tests of development versions
       run: |
         python -m pytest $PYTEST_ARGS . \
           --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
+
+    - name: Run 'everything all at once' tests of releases
+      run: |
+        python -m pytest --pyargs --lf \
+          openff.toolkit --deselect _tests/test_parameter_plugins.py \
+          openff.units \
+          openff.utilities \
+          openff.interchange \
+          openff.fragmenter \
+          openff.nagl
