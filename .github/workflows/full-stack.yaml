@@ -21,6 +21,7 @@ jobs:
           - "macos-latest"
         python-version:
           - "3.12"
+          - "3.13"
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
@@ -34,6 +35,12 @@ jobs:
 
     # Only check out the repos whose tests directly run; development
     # installs of other packages are brought in via pip via micromamba
+    - name: Checkout OpenFF NAGL
+      uses: actions/checkout@v7
+      with:
+        repository: openforcefield/openff-nagl
+        path: openff-nagl
+
     - name: Checkout Interchange
       uses: actions/checkout@v7
       with:
@@ -72,6 +79,7 @@ jobs:
     - name: Install most recent development versions
       run: |
         uv pip install --no-deps -e \
+          openff-nagl/ \
           openff-interchange/ \
           openff-interchange/plugins/ \
           openff-units/ \
