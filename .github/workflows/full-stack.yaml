@@ -12,6 +12,7 @@ defaults:
 
 jobs:
   test:
+    name: OS=${{ matrix.os }}, Python=${{ matrix.python-version }}, Variant=${{ matrix.variant }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -22,6 +23,9 @@ jobs:
         python-version:
           - "3.12"
           - "3.13"
+        variant:
+          - "development"
+          - "released"
 
     env:
       OE_LICENSE: ${{ github.workspace }}/oe_license.txt
@@ -36,30 +40,35 @@ jobs:
     # Only check out the repos whose tests directly run; development
     # installs of other packages are brought in via pip via micromamba
     - name: Checkout OpenFF NAGL
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-nagl
         path: openff-nagl
 
     - name: Checkout Interchange
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-interchange
         path: openff-interchange
 
     - name: Checkout OpenFF Fragmenter
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-fragmenter
         path: openff-fragmenter
 
     - name: Checkout OpenFF Units
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-units
         path: openff-units
 
     - name: Checkout OpenFF Utilities
+      if: matrix.variant == 'development'
       uses: actions/checkout@v7
       with:
         repository: openforcefield/openff-utilities
@@ -77,6 +86,7 @@ jobs:
       run: echo "${OE_LICENSE_TEXT}" > ${OE_LICENSE}
 
     - name: Install most recent development versions
+      if: matrix.variant == 'development'
       run: |
         uv pip install --no-deps -e \
           openff-nagl/ \
@@ -88,7 +98,19 @@ jobs:
           openff-utilities/
         uv pip list
 
-    - name: Run 'everything all at once' tests
+    - name: Run 'everything all at once' tests of development versions
+      if: matrix.variant == 'development'
       run: |
         python -m pytest $PYTEST_ARGS . \
           --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
+
+    - name: Run 'everything all at once' tests of releases
+      if: matrix.variant == 'released'
+      run: |
+        python -m pytest --pyargs --lf \
+          openff.toolkit --deselect _tests/test_parameter_plugins.py \
+          openff.units \
+          openff.utilities \
+          openff.interchange \
+          openff.fragmenter \
+          openff.nagl
