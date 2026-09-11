@@ -99,11 +99,13 @@ jobs:
         uv pip list
 
     - name: Run 'everything all at once' tests of development versions
+      if: matrix.variant == 'development'
       run: |
         python -m pytest $PYTEST_ARGS . \
           --ignore=openff-utilities/openff/utilities/_tests/test_provenance.py \
 
     - name: Run 'everything all at once' tests of releases
+      if: matrix.variant == 'released'
       run: |
         python -m pytest --pyargs --lf \
           openff.toolkit --deselect _tests/test_parameter_plugins.py \
